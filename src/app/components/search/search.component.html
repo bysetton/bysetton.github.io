@@ -1,0 +1,42 @@
+<div [ngClass]="focus + ' ' + stickMenu"
+  class="search-container ease-background ease-padding ease-height">
+  <mat-form-field class="form-field">
+    <mat-label class="search-title">Search</mat-label>
+    <input matInput placeholder="Eg. Craft beer" autocomplete="off"
+      [formControl]="searchControl" (blur)="onBlur()" (focus)="onFocus()">
+  </mat-form-field>
+  <div *ngIf="activeTags && activeTags.length > 0" class="tag-container">
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of activeTags" color="primary"
+        (click)="removeTag(tag)">#{{tag.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>
+<ng-container *ngIf="showSearchResult && searchResult.length != 0">
+  <h1 class="result-title">Full results</h1>
+  <div class="search-result-container">
+    <line-item *ngFor="let result of searchResult" [config]="result"
+      [searchValue]="searchValue" (tagClicked)="addTag($event)"
+      (itemSelected)="onItemSelected(result)"></line-item>
+  </div>
+  <ng-container
+    *ngIf="companyNameSearchResult.length != 0 || aboutSearchResult.length != 0">
+    <h2>Suggestions</h2>
+    <line-item *ngFor="let result of companyNameSearchResult" [config]="result"
+      [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
+      (tagClicked)="addTag($event)">
+    </line-item>
+    <line-item *ngFor="let result of aboutSearchResult" [config]="result"
+      [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
+      (tagClicked)="addTag($event)">
+    </line-item>
+  </ng-container>
+  <div *ngIf="searchResult.length == 0" class="no-result-container">
+    <h1 class="no-result-title">Full results</h1>
+    <div *ngIf="searchResult.length == 0" class="no-result-text">
+      <h4>No results for this search, check below</h4>
+      <h5>remove tags for more general search</h5>
+    </div>
+  </div>
+</ng-container>

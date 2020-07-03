@@ -1,0 +1,16 @@
+<mat-card (click)="onCardClick()" class="mobile-card">
+  <div class="profile-info">
+    <div class="image-container">
+      <img
+        [src]="config.img || 'https://i.pinimg.com/originals/82/1a/a8/821aa80c546ac7d554e4ac0de0e95cb8.jpg'">
+    </div>
+    <div class="info">
+      <h1>{{config.name}}</h1>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of config.tags" color="primary"
+          (click)="hashtagClicked(tag)">{{tag.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</mat-card>

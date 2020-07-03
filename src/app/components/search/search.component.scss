@@ -1,0 +1,132 @@
+$search-padding-normal: 10px 50px 0;
+$search-padding-reduced: 0 50px 0;
+
+.form-field,
+.tag-container {
+  width: inherit;
+  margin: 0 100px;
+}
+
+.search-container {
+  text-align: center;
+  position: fixed;
+  width: -webkit-fill-available;
+  left: 0;
+  top: 0;
+  padding: $search-padding-normal;
+  z-index: 2;
+
+  input {
+    -webkit-transition: font-size 0.5s ease-out;
+    -moz-transition: font-size 0.5s ease-out;
+    -o-transition: font-size 0.5s ease-out;
+    transition: font-size 0.5s ease-out;
+  }
+}
+
+.ease-padding {
+  -webkit-transition: padding 0.5s ease-out, background-color 1s ease-out;
+  -moz-transition: padding 0.5s ease-out, background-color 1s ease-out;
+  -o-transition: padding 0.5s ease-out, background-color 1s ease-out;
+  transition: padding 0.5s ease-out, background-color 1s ease-out;
+}
+
+.stick-menu {
+  padding: $search-padding-reduced;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.unstick-menu {
+  padding: $search-padding-normal;
+  background-color: red;
+}
+
+.search-open {
+  padding: $search-padding-normal;
+  background-color: red;
+
+  input {
+    margin-bottom: 0;
+    font-size: 37px;
+  }
+}
+
+.search-closed {
+  input {
+    font-size: 37px;
+  }
+}
+
+mat-label {
+  font-size: 15px;
+}
+
+mat-chip-list {
+  mat-chip {
+    margin-top: -7px;
+  }
+
+  ::ng-deep .mat-chip-list-wrapper {
+    height: 40px;
+  }
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary:hover {
+  background-color: grey;
+  color: black;
+}
+
+.no-result-text {
+  @media only screen and (max-width: 600px) {
+    padding: 50px 0;
+    height: 100%;
+
+    h4 {
+      margin: 0 !important;
+    }
+  }
+}
+
+h1,
+h2,
+h4,
+h5 {
+  text-align: center;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+
+.no-result-container {
+  @media only screen and (max-width: 600px) {
+    padding-top: 100px;
+    height: 100%;
+  }
+}
+
+.result-title {
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 0;
+    padding: 110px 0 0;
+  }
+}
+
+.search-result-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+
+  line-item:nth-child(even) {
+    margin-right: 100px;
+  }
+
+  line-item:nth-child(odd) {
+    margin-left: 100px;
+  }
+
+  line-item {
+    flex-grow: 1;
+    width: calc(50% - 150px);
+  }
+}

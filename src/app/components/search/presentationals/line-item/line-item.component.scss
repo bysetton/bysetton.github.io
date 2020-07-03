@@ -1,0 +1,63 @@
+:host {
+  margin: 20px;
+}
+
+mat-card {
+  padding: 20px !important;
+  cursor: pointer;
+}
+
+.mat-chip-list-wrapper {
+  margin: 10px;
+}
+
+img {
+  width: 100px;
+}
+
+.image-container {
+  border-radius: 4px;
+  width: 70%;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container img {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+
+.profile-info {
+  align-items: center;
+  display: flex;
+}
+
+.info {
+  width: 100%;
+  margin: 10px 10px 10px 25px;
+}
+
+h1 {
+  margin: 0 auto 10px !important;
+}
+
+h4 {
+  border-radius: 20%;
+  border: 1px;
+  display: inline-flex;
+}
+
+mat-chip:focus {
+  background-color: transparent !important;
+}

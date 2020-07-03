@@ -1,0 +1,70 @@
+mat-card {
+  padding: 50px !important;
+  max-width: 100%;
+  margin: 0 100px;
+}
+
+h1 {
+  font-size: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.website-url {
+  margin: 10px;
+
+  a {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+  }
+
+  a:hover {
+    color: red;
+  }
+}
+
+.image-container {
+  border-radius: 4px;
+  width: 80%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container img {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.chip {
+  display: inline-flex;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper {
+  align-items: left;
+}
+
+.card-container {
+  height: 100%;
+}
+
+.profile-info {
+  align-items: left;
+  display: flex;
+}
+
+.info {
+  margin-left: 50px;
+  width: 100%;
+}
+
+.mat-card-content {
+  margin-top: 50px;
+}
