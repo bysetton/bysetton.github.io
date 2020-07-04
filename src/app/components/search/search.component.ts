@@ -81,10 +81,11 @@ export class SearchComponent implements OnInit {
 
   onValueChange(value): void {
     if (!this.isHomePage && value) {
-      this.blur.emit(true);
+      // this.blur.emit(true);
       this.showSearchResult = true;
-
+      this.router.navigateByUrl('/home');
     }
+
     this.searchValue = value;
     this.refreshSearchResults();
   }
