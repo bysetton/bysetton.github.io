@@ -36,6 +36,7 @@ export class SearchComponent implements OnInit {
   searchResult: Company[] = [];
   companyNameSearchResult: Company[] = [];
   aboutSearchResult: Company[] = [];
+  suggestionResult: Company[] = [];
 
   isHomePage: boolean;
   showSearchResult: boolean;
@@ -81,7 +82,7 @@ export class SearchComponent implements OnInit {
 
   onValueChange(value): void {
     if (!this.isHomePage && value) {
-      // this.blur.emit(true);
+      this.blur.emit(true);
       this.showSearchResult = true;
       this.router.navigateByUrl('/home');
     }
@@ -99,6 +100,7 @@ export class SearchComponent implements OnInit {
 
   removeTag(tag: Tag): void {
     this.searchService.removeTag(tag);
+    this.refreshSearchResults();
   }
 
   onItemSelected(company: Company): void {
@@ -167,6 +169,12 @@ export class SearchComponent implements OnInit {
       this.searchResult = this.companies;
     }
     this.filterActiveTags();
+    this.buildSuggestions();
+  }
+
+  private buildSuggestions() {
+    this.suggestionResult = this.companyNameSearchResult.concat(this.aboutSearchResult);
+    console.log(this.suggestionResult);
   }
 
   private searchCompanyName(): void {
@@ -207,9 +215,17 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.searchResult = this.searchResult.filter((company) => {
-      return company.tags.some((tag) => {
-        return this.activeTags.some((t) => t.name == tag.name);
+      let containsAllTag: boolean = true;
+      this.activeTags.forEach((tag) => {
+        let tagExists = false;
+        company.tags.forEach((companyTag) => {
+          if (companyTag.name == tag.name) {
+            tagExists = true;
+          }
+        });
+        containsAllTag = tagExists;
       });
+      return containsAllTag;
     });
   }
 
