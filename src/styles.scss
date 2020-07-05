@@ -7,7 +7,24 @@
 @include mat-core(); // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$findSA-primary: mat-palette($mat-indigo);
+$mat-black: (
+  50: #000,
+  100: #000,
+  200: #000,
+  300: #000,
+  400: #000,
+  500: #000,
+  600: #000,
+  700: #000,
+  800: #000,
+  900: #000,
+  A100: #000,
+  A200: #000,
+  A400: #000,
+  A700: #000,
+  contrast: (50: $dark-primary-text, 100: $dark-primary-text, 200: $dark-primary-text, 300: $dark-primary-text, 400: $dark-primary-text, 500: $light-primary-text, 600: $light-primary-text, 700: $light-primary-text, 800: $light-primary-text, 900: $light-primary-text, A100: $dark-primary-text, A200: $light-primary-text, A400: $light-primary-text, A700: $light-primary-text,)
+);
+$findSA-primary: mat-palette($mat-black);
 $findSA-accent: mat-palette($mat-pink, A200, A100, A400); // The warn palette is optional (defaults to red).
 $findSA-warn: mat-palette($mat-red); // Create the theme object (a Sass map containing all of the palettes).
 $findSA-theme: mat-light-theme($findSA-primary, $findSA-accent, $findSA-warn); // Include theme styles for core and each component used in your app.

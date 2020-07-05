@@ -1,6 +1,38 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
 
+:host ::ng-deep {
+  .mat-form-field-label-wrapper {
+    top: -1em;
+  }
+
+  .mat-form-field-infix {
+    margin-left: 15px;
+    padding-top: 10px;
+  }
+
+  .mat-form-field-label {
+    margin-left: 20px;
+  }
+
+  .mat-form-field-outline {
+    .mat-form-field-outline-end {
+      border-radius: 0 40px 40px 0;
+    }
+
+    .mat-form-field-outline-start {
+      width: 40px !important;
+      border-radius: 40px 0 0 40px;
+    }
+  }
+
+  .mat-form-field-appearance-outline {
+    .mat-form-field-wrapper {
+      margin-bottom: -10px;
+    }
+  }
+}
+
 .form-field,
 .tag-container {
   width: inherit;
