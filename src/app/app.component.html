@@ -1,7 +1,12 @@
-<div class="background-curtain">
-  <div class='background-image'>
-    <img src="https://coloringhome.com/coloring/di8/xxM/di8xxM6yT.png" />
-  </div>
-  <search (blur)="onSearchFocus($event)"></search>
-  <router-outlet *ngIf="!searchFocus"></router-outlet>
+<div *ngIf="!loadRouter" class="spinner-container">
+  <mat-spinner></mat-spinner>
 </div>
+<div class='background-image'>
+  <img src="https://coloringhome.com/coloring/di8/xxM/di8xxM6yT.png" />
+</div>
+<ng-container *ngIf="loadRouter">
+  <div class="background-curtain">
+    <search [companies]="companies" (blur)="onSearchFocus($event)"></search>
+    <router-outlet *ngIf="!searchFocus"></router-outlet>
+  </div>
+</ng-container>

@@ -4,6 +4,7 @@ import {
   HostListener,
   EventEmitter,
   Output,
+  Input,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router, NavigationEnd, } from '@angular/router';
@@ -11,7 +12,6 @@ import { Location } from '@angular/common'
 
 import { Company, Tag } from 'src/app/interfaces/company.interface';
 import { SearchService } from 'src/app/services/search/search.service';
-import { CompaniesService } from 'src/app/services/companies/companies.service';
 
 @Component({
   selector: 'search',
@@ -20,6 +20,8 @@ import { CompaniesService } from 'src/app/services/companies/companies.service';
 })
 
 export class SearchComponent implements OnInit {
+
+  @Input() companies: Company[] = [];
 
   @Output() blur = new EventEmitter<boolean>();
 
@@ -31,7 +33,6 @@ export class SearchComponent implements OnInit {
   stickMenu: string = 'unstick-menu';
   focus: string = 'search-close';
 
-  companies: Company[] = [];
   tagSearchResult: Company[] = [];
   searchResult: Company[] = [];
   companyNameSearchResult: Company[] = [];
@@ -39,32 +40,29 @@ export class SearchComponent implements OnInit {
   suggestionResult: Company[] = [];
 
   isHomePage: boolean;
-  showSearchResult: boolean = true;
+  showSearchResult: boolean;
 
   private requiredScrollPos: number = 50;
 
   constructor(
-    private companiesService: CompaniesService,
     private searchService: SearchService,
     private router: Router,
     private location: Location) { }
 
   ngOnInit(): void {
-    this.companiesService.companies.subscribe((companies) => {
-      this.searchResult = this.companies = companies;
-      this.maybeSetHomePage();
-      this.buildSearchControl();
-      this.setParamAndInit();
-      this.searchService.activeTags$.subscribe((actionTags: Tag[]) => {
-        this.activeTags = actionTags;
-        this.refreshSearchResults();
+    this.searchResult = this.companies;
+    this.maybeSetHomePage();
+    this.buildSearchControl();
+    this.setParamAndInit();
+    this.searchService.activeTags$.subscribe((actionTags: Tag[]) => {
+      this.activeTags = actionTags;
+      this.refreshSearchResults();
+      this.updateParamsToUrl();
+    });
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if (event instanceof NavigationEnd) {
         this.updateParamsToUrl();
-      });
-      this.router.events.subscribe((event: NavigationEnd) => {
-        if (event instanceof NavigationEnd) {
-          this.updateParamsToUrl();
-        }
-      });
+      }
     });
   }
 

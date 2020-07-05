@@ -13,9 +13,6 @@
     </mat-chip-list>
   </div>
 </div>
-<div *ngIf="companies.length == 0" class="spinner-container">
-  <mat-spinner></mat-spinner>
-</div>
 <ng-container *ngIf=" showSearchResult && searchResult.length !=0">
   <div class="search-result-container">
     <line-item *ngFor="let result of searchResult" [config]="result"

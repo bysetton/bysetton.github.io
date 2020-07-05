@@ -74,13 +74,21 @@ export class CompaniesService {
   constructor(private spreadSheetService: SpreadSheetService) { }
 
   get companies(): Observable<Company[]> {
-    if (this._companies.length != 0) {
+
+    if (this._companies.length) {
       return of(this._companies);
     }
+
     const spreadSheetData = this.spreadSheetService.getSheetData();
     spreadSheetData.subscribe((companies) => {
       this._companies = companies;
     });
     return spreadSheetData;
+  }
+
+  initCompanies(): void {
+    this.companies.subscribe((companies) => {
+      this._companies = companies;
+    });
   }
 }
