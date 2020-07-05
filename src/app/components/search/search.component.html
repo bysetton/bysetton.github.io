@@ -20,14 +20,9 @@
       [searchValue]="searchValue" (tagClicked)="addTag($event)"
       (itemSelected)="onItemSelected(result)"></line-item>
   </div>
-  <ng-container
-    *ngIf="companyNameSearchResult.length != 0 || aboutSearchResult.length != 0">
+  <ng-container *ngIf="suggestionResult.length != 0">
     <h2>Suggestions</h2>
-    <line-item *ngFor="let result of companyNameSearchResult" [config]="result"
-      [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
-      (tagClicked)="addTag($event)">
-    </line-item>
-    <line-item *ngFor="let result of aboutSearchResult" [config]="result"
+    <line-item *ngFor="let result of suggestionResult" [config]="result"
       [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
       (tagClicked)="addTag($event)">
     </line-item>

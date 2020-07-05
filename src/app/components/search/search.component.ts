@@ -95,6 +95,7 @@ export class SearchComponent implements OnInit {
     if (this.activeTags.find((t) => t.name === tag.name)) {
       return;
     }
+    this.refreshSearchResults();
     this.searchService.addTag(tag);
   }
 
@@ -160,21 +161,30 @@ export class SearchComponent implements OnInit {
   }
 
   private refreshSearchResults() {
-    if (this.searchValue) {
-      this.searchCompanyName();
-      this.searchAbout();
-      this.searchTags();
-      this.combineSearchResults();
-    } else {
+    if (!this.searchValue && this.activeTags.length == 0) {
       this.searchResult = this.companies;
+      return;
     }
+    this.searchCompanyName();
+    this.searchAbout();
+    this.searchTags();
+    this.combineSearchResults();
     this.filterActiveTags();
     this.buildSuggestions();
   }
 
   private buildSuggestions() {
-    this.suggestionResult = this.companyNameSearchResult.concat(this.aboutSearchResult);
-    console.log(this.suggestionResult);
+    this.suggestionResult = [];
+    this.companyNameSearchResult.forEach((company) => {
+      if (this.suggestionResult.indexOf(company) == -1 && this.searchResult.indexOf(company) == -1) {
+        this.suggestionResult.push(company);
+      }
+    });
+    this.aboutSearchResult.forEach((company) => {
+      if (this.suggestionResult.indexOf(company) == -1 && this.searchResult.indexOf(company) == -1) {
+        this.suggestionResult.push(company);
+      }
+    });
   }
 
   private searchCompanyName(): void {
@@ -214,6 +224,9 @@ export class SearchComponent implements OnInit {
     if (this.activeTags.length == 0) {
       return;
     }
+    if (this.searchResult.length == 0) {
+      this.searchResult = this.companies;
+    }
     this.searchResult = this.searchResult.filter((company) => {
       let containsAllTag: boolean = true;
       this.activeTags.forEach((tag) => {
@@ -223,7 +236,10 @@ export class SearchComponent implements OnInit {
             tagExists = true;
           }
         });
-        containsAllTag = tagExists;
+        containsAllTag = containsAllTag && tagExists;
+        if (!tagExists) {
+          this.suggestionResult.push(company);
+        }
       });
       return containsAllTag;
     });
@@ -236,7 +252,6 @@ export class SearchComponent implements OnInit {
     }
     this.location.replaceState(this.getNewUrl(newUrl));
   }
-
   private getNewUrl(newUrl: string): string {
     if (this.activeTags.length != 0) {
       const queryParams: string[] = this.activeTags.map((tag) => { return tag.name });
@@ -253,4 +268,5 @@ export class SearchComponent implements OnInit {
     }
     return url
   }
+
 }
