@@ -1,5 +1,6 @@
 export interface Company {
   img: string;
+  coverImage: string;
   name: string;
   websiteUrl: string;
   websiteDisplay: string;
