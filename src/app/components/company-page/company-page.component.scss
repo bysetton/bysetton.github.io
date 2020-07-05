@@ -1,17 +1,52 @@
+$background-color: rgba(234, 234, 234, 0.9);
+
 mat-card {
   padding: 50px !important;
   max-width: 100%;
   margin: 0 100px;
 }
 
+back-button {
+  z-index: 3;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 h1 {
+  background-color: $background-color;
+  text-align: center;
   font-size: 50px;
-  width: 100%;
-  margin-bottom: 10px;
-  margin-top: 0;
+  border-radius: 60px;
+  padding: 25px;
+  min-width: 350px;
+  border-color: black;
+  border-width: 2px !important;
+  border: solid;
+  margin-bottom: 15px;
+}
+
+mat-chip-list {
+  mat-chip {
+    border-width: 1.5px !important;
+    padding: 15px;
+    min-height: 40px;
+    border-radius: 20px;
+  }
+}
+
+.image-overlay-container {
+  position: absolute;
+}
+
+.chip-list {
+  mat-chip {
+    background-color: $background-color !important;
+  }
 }
 
 .website-url {
+  text-align: center;
   margin: 10px;
 
   a {
@@ -29,9 +64,8 @@ h1 {
 }
 
 .image-container {
-  border-radius: 4px;
-  width: 80%;
-  height: 200px;
+  position: relative;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,10 +79,6 @@ h1 {
 
 .chip {
   display: inline-flex;
-}
-
-:host ::ng-deep .mat-chip-list-wrapper {
-  align-items: left;
 }
 
 .card-container {
