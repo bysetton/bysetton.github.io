@@ -17,7 +17,6 @@
   <mat-spinner></mat-spinner>
 </div>
 <ng-container *ngIf=" showSearchResult && searchResult.length !=0">
-  <h1 class="result-title">Full results</h1>
   <div class="search-result-container">
     <line-item *ngFor="let result of searchResult" [config]="result"
       [searchValue]="searchValue" (tagClicked)="addTag($event)"
@@ -31,10 +30,10 @@
     </line-item>
   </ng-container>
 </ng-container>
-<div *ngIf="searchResult.length == 0" class="no-result-container">
-  <h1 class="no-result-title">Full results</h1>
+<div *ngIf="!searchResult.length && companies.length"
+  class="no-result-container">
   <div *ngIf="searchResult.length == 0" class="no-result-text">
     <h4>No results for this search, check below</h4>
-    <h5>remove tags for a more general search</h5>
+    <h5 *ngIf="activeTags.length">remove tags for a more general search</h5>
   </div>
 </div>

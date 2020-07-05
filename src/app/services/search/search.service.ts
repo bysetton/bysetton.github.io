@@ -10,7 +10,7 @@ import { Tag } from '../../interfaces/company.interface'
 })
 export class SearchService {
 
-  private _isHomePage: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private _isHomePage: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   private activeTags: BehaviorSubject<Tag[]> = new BehaviorSubject<Tag[]>([]);
   private _activeTags: Tag[] = [];
 
