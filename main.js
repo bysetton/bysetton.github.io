@@ -44,8 +44,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
-    { path: 'brand/:company', component: _components_company_page_company_page_component__WEBPACK_IMPORTED_MODULE_4__["CompanyPageComponent"] },
+    { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: ':company', component: _components_company_page_company_page_component__WEBPACK_IMPORTED_MODULE_4__["CompanyPageComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -53,7 +53,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -70,7 +70,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-curtain\">\n  <div class='background-image'>\n    <img src=\"https://coloringhome.com/coloring/di8/xxM/di8xxM6yT.png\" />\n  </div>\n  <search (blur)=\"onSearchFocus($event)\"></search>\n  <router-outlet *ngIf=\"!searchFocus\"></router-outlet>\n</div>"
+module.exports = "<div *ngIf=\"!loadRouter\" class=\"spinner-container\">\n  <mat-spinner></mat-spinner>\n</div>\n<div class='background-image'>\n  <img src=\"https://coloringhome.com/coloring/di8/xxM/di8xxM6yT.png\" />\n</div>\n<ng-container *ngIf=\"loadRouter\">\n  <div class=\"background-curtain\">\n    <search [companies]=\"companies\" (blur)=\"onSearchFocus($event)\"></search>\n    <router-outlet *ngIf=\"!searchFocus\"></router-outlet>\n  </div>\n</ng-container>"
 
 /***/ }),
 
@@ -81,7 +81,7 @@ module.exports = "<div class=\"background-curtain\">\n  <div class='background-i
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background-curtain {\n  background-color: #EAEAEA;\n  min-height: 100%;\n  padding-top: 75px;\n  margin: 0 150px;\n  box-shadow: 0 0 5px 12px rgba(0, 0, 0, 0.55); }\n  @media only screen and (max-width: 860px) {\n    .background-curtain {\n      background-color: rgba(0, 0, 0, 0);\n      margin: 0; } }\n  .background-image {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden; }\n  .background-image img {\n  z-index: -1;\n  position: fixed;\n  flex-shrink: 0;\n  min-width: 100%;\n  min-height: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JhcmFrL2ZpbmRTQS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGVBQWU7RUFHZiw0Q0FBeUMsRUFBQTtFQUN6QztJQVJGO01BU0ksa0NBQWtDO01BQ2xDLFNBQVMsRUFBQSxFQUVaO0VBRUQ7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQixnQkFBZ0IsRUFBQTtFQUdsQjtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsY0FBYztFQUNkLGVBQWU7RUFDZixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYWNrZ3JvdW5kLWN1cnRhaW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRUFFQUVBO1xuICBtaW4taGVpZ2h0OiAxMDAlO1xuICBwYWRkaW5nLXRvcDogNzVweDtcbiAgbWFyZ2luOiAwIDE1MHB4O1xuICAtd2Via2l0LWJveC1zaGFkb3c6IDAgMCA1cHggMTJweCByZ2JhKDAsMCwwLDAuNTUpO1xuICAtbW96LWJveC1zaGFkb3c6IDAgMCA1cHggMTJweCByZ2JhKDAsMCwwLDAuNTUpO1xuICBib3gtc2hhZG93OiAwIDAgNXB4IDEycHggcmdiYSgwLDAsMCwwLjU1KTtcbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA4NjBweCkge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMCk7XG4gICAgbWFyZ2luOiAwO1xuICB9XG59XG5cbi5iYWNrZ3JvdW5kLWltYWdlIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5iYWNrZ3JvdW5kLWltYWdlIGltZyB7XG4gIHotaW5kZXg6IC0xO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGZsZXgtc2hyaW5rOiAwO1xuICBtaW4td2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDEwMCU7XG59Il19 */"
+module.exports = ".spinner-container {\n  margin-top: 200px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.background-curtain {\n  background-color: #EAEAEA;\n  min-height: 100%;\n  padding-top: 100px;\n  margin: 0 150px;\n  box-shadow: 0 0 5px 12px rgba(0, 0, 0, 0.55); }\n\n@media only screen and (max-width: 860px) {\n    .background-curtain {\n      background-color: rgba(0, 0, 0, 0);\n      margin: 0; } }\n\n.background-image {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden; }\n\n.background-image img {\n  z-index: -1;\n  position: fixed;\n  flex-shrink: 0;\n  min-width: 100%;\n  min-height: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JhcmFrL2ZpbmRTQS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFpQjtFQUNqQixXQUFXO0VBQ1gsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQix1QkFBdUIsRUFBQTs7QUFHekI7RUFDRSx5QkFBeUI7RUFDekIsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtFQUNsQixlQUFlO0VBR2YsNENBQXlDLEVBQUE7O0FBQ3pDO0lBUkY7TUFTSSxrQ0FBa0M7TUFDbEMsU0FBUyxFQUFBLEVBRVo7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQixnQkFBZ0IsRUFBQTs7QUFHbEI7RUFDRSxXQUFXO0VBQ1gsZUFBZTtFQUNmLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3Bpbm5lci1jb250YWluZXIge1xuICBtYXJnaW4tdG9wOiAyMDBweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG4uYmFja2dyb3VuZC1jdXJ0YWluIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0VBRUFFQTtcbiAgbWluLWhlaWdodDogMTAwJTtcbiAgcGFkZGluZy10b3A6IDEwMHB4O1xuICBtYXJnaW46IDAgMTUwcHg7XG4gIC13ZWJraXQtYm94LXNoYWRvdzogMCAwIDVweCAxMnB4IHJnYmEoMCwwLDAsMC41NSk7XG4gIC1tb3otYm94LXNoYWRvdzogMCAwIDVweCAxMnB4IHJnYmEoMCwwLDAsMC41NSk7XG4gIGJveC1zaGFkb3c6IDAgMCA1cHggMTJweCByZ2JhKDAsMCwwLDAuNTUpO1xuICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDg2MHB4KSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwKTtcbiAgICBtYXJnaW46IDA7XG4gIH1cbn1cblxuLmJhY2tncm91bmQtaW1hZ2Uge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLmJhY2tncm91bmQtaW1hZ2UgaW1nIHtcbiAgei1pbmRleDogLTE7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgZmxleC1zaHJpbms6IDA7XG4gIG1pbi13aWR0aDogMTAwJTtcbiAgbWluLWhlaWdodDogMTAwJTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -97,15 +97,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_companies_companies_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/companies/companies.service */ "./src/app/services/companies/companies.service.ts");
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(companiesService) {
+        this.companiesService = companiesService;
+        this.companies = [];
         this.title = 'angular-material-app';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.companiesService.companies.subscribe(function (companies) {
+            if (companies.length) {
+                _this.companies = companies;
+                _this.loadRouter = true;
+            }
+        });
+    };
     AppComponent.prototype.onSearchFocus = function (state) {
         var _this = this;
-        console.log('----<<<', state);
         setTimeout(function () { return _this.searchFocus = state; }, 100);
     };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -113,7 +125,8 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_companies_companies_service__WEBPACK_IMPORTED_MODULE_2__["CompaniesService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -136,12 +149,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_home_home_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/home/home.module */ "./src/app/components/home/home.module.ts");
-/* harmony import */ var _components_search_search_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/search/search.module */ "./src/app/components/search/search.module.ts");
-/* harmony import */ var _components_company_page_company_page_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/company-page/company-page.module */ "./src/app/components/company-page/company-page.module.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/esm5/progress-spinner.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_home_home_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/home/home.module */ "./src/app/components/home/home.module.ts");
+/* harmony import */ var _components_search_search_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/search/search.module */ "./src/app/components/search/search.module.ts");
+/* harmony import */ var _components_company_page_company_page_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/company-page/company-page.module */ "./src/app/components/company-page/company-page.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 
@@ -158,19 +173,20 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
             ],
             imports: [
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
-                _components_home_home_module__WEBPACK_IMPORTED_MODULE_6__["HomeModule"],
-                _components_search_search_module__WEBPACK_IMPORTED_MODULE_7__["SearchModule"],
-                _components_company_page_company_page_module__WEBPACK_IMPORTED_MODULE_8__["CompanyPageModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
+                _components_home_home_module__WEBPACK_IMPORTED_MODULE_7__["HomeModule"],
+                _components_search_search_module__WEBPACK_IMPORTED_MODULE_8__["SearchModule"],
+                _components_company_page_company_page_module__WEBPACK_IMPORTED_MODULE_9__["CompanyPageModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
+                _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_4__["MatProgressSpinnerModule"],
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -302,7 +318,7 @@ module.exports = "<back-button (clicked)=\"onBackClicked()\"></back-button>\n<di
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "p {\n  text-align: center; }\n\nmat-card {\n  padding: 50px !important;\n  max-width: 100%;\n  margin: 0 100px; }\n\nback-button {\n  z-index: 3;\n  position: fixed;\n  left: 0;\n  top: 0; }\n\nh1 {\n  background-color: rgba(234, 234, 234, 0.9);\n  text-align: center;\n  font-size: 50px;\n  border-radius: 60px;\n  padding: 25px;\n  min-width: 350px;\n  border-color: black;\n  border-width: 2px !important;\n  border: solid;\n  margin-top: 100px;\n  margin-bottom: 15px; }\n\nmat-chip-list mat-chip {\n  border-width: 1.5px !important;\n  padding: 15px;\n  min-height: 40px;\n  border-radius: 20px; }\n\n.image-overlay-container {\n  position: absolute; }\n\n.chip-list mat-chip {\n  background-color: rgba(234, 234, 234, 0.9) !important; }\n\n.website-url {\n  text-align: center;\n  margin: 10px; }\n\n.website-url a {\n    color: black;\n    text-decoration: none;\n    transition: color 0.3s ease-out; }\n\n.website-url a:hover {\n    color: red; }\n\n.image-container {\n  margin-top: -75px;\n  position: relative;\n  height: 460px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden; }\n\n.image-container img {\n  flex-shrink: 0;\n  width: 100%; }\n\n.chip {\n  display: inline-flex; }\n\n.card-container {\n  height: 100%; }\n\n.profile-info {\n  align-items: center; }\n\n.info {\n  margin-left: 50px;\n  width: 100%; }\n\n.mat-card-content {\n  margin-top: 50px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JhcmFrL2ZpbmRTQS9zcmMvYXBwL2NvbXBvbmVudHMvY29tcGFueS1wYWdlL2NvbXBhbnktcGFnZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGtCQUFrQixFQUFBOztBQUdwQjtFQUNFLHdCQUF3QjtFQUN4QixlQUFlO0VBQ2YsZUFBZSxFQUFBOztBQUdqQjtFQUNFLFVBQVU7RUFDVixlQUFlO0VBQ2YsT0FBTztFQUNQLE1BQU0sRUFBQTs7QUFHUjtFQUNFLDBDQXBCeUM7RUFxQnpDLGtCQUFrQjtFQUNsQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsbUJBQW1CO0VBQ25CLDRCQUE0QjtFQUM1QixhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLG1CQUFtQixFQUFBOztBQUdyQjtFQUVJLDhCQUE4QjtFQUM5QixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLG1CQUFtQixFQUFBOztBQUl2QjtFQUNFLGtCQUFrQixFQUFBOztBQUdwQjtFQUVJLHFEQUE4QyxFQUFBOztBQUlsRDtFQUNFLGtCQUFrQjtFQUNsQixZQUFZLEVBQUE7O0FBRmQ7SUFLSSxZQUFZO0lBQ1oscUJBQXFCO0lBSXJCLCtCQUErQixFQUFBOztBQVZuQztJQWNJLFVBQVUsRUFBQTs7QUFJZDtFQUNFLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGdCQUFnQixFQUFBOztBQUdsQjtFQUNFLGNBQWM7RUFDZCxXQUFXLEVBQUE7O0FBR2I7RUFDRSxvQkFBb0IsRUFBQTs7QUFHdEI7RUFDRSxZQUFZLEVBQUE7O0FBR2Q7RUFDRSxtQkFBbUIsRUFBQTs7QUFHckI7RUFDRSxpQkFBaUI7RUFDakIsV0FBVyxFQUFBOztBQUdiO0VBQ0UsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NvbXBhbnktcGFnZS9jb21wYW55LXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyMzQsIDIzNCwgMjM0LCAwLjkpO1xuXG5wIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5tYXQtY2FyZCB7XG4gIHBhZGRpbmc6IDUwcHggIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBtYXJnaW46IDAgMTAwcHg7XG59XG5cbmJhY2stYnV0dG9uIHtcbiAgei1pbmRleDogMztcbiAgcG9zaXRpb246IGZpeGVkO1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG59XG5cbmgxIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJhY2tncm91bmQtY29sb3I7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA2MHB4O1xuICBwYWRkaW5nOiAyNXB4O1xuICBtaW4td2lkdGg6IDM1MHB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xuICBib3JkZXI6IHNvbGlkO1xuICBtYXJnaW4tdG9wOiAxMDBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTVweDtcbn1cblxubWF0LWNoaXAtbGlzdCB7XG4gIG1hdC1jaGlwIHtcbiAgICBib3JkZXItd2lkdGg6IDEuNXB4ICFpbXBvcnRhbnQ7XG4gICAgcGFkZGluZzogMTVweDtcbiAgICBtaW4taGVpZ2h0OiA0MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gIH1cbn1cblxuLmltYWdlLW92ZXJsYXktY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG4uY2hpcC1saXN0IHtcbiAgbWF0LWNoaXAge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRiYWNrZ3JvdW5kLWNvbG9yICFpbXBvcnRhbnQ7XG4gIH1cbn1cblxuLndlYnNpdGUtdXJsIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDEwcHg7XG5cbiAgYSB7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGNvbG9yIDAuM3MgZWFzZS1vdXQ7XG4gICAgLW1vei10cmFuc2l0aW9uOiBjb2xvciAwLjNzIGVhc2Utb3V0O1xuICAgIC1vLXRyYW5zaXRpb246IGNvbG9yIDAuM3MgZWFzZS1vdXQ7XG4gICAgdHJhbnNpdGlvbjogY29sb3IgMC4zcyBlYXNlLW91dDtcbiAgfVxuXG4gIGE6aG92ZXIge1xuICAgIGNvbG9yOiByZWQ7XG4gIH1cbn1cblxuLmltYWdlLWNvbnRhaW5lciB7XG4gIG1hcmdpbi10b3A6IC03NXB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGhlaWdodDogNDYwcHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4uaW1hZ2UtY29udGFpbmVyIGltZyB7XG4gIGZsZXgtc2hyaW5rOiAwO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmNoaXAge1xuICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbn1cblxuLmNhcmQtY29udGFpbmVyIHtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4ucHJvZmlsZS1pbmZvIHtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmluZm8ge1xuICBtYXJnaW4tbGVmdDogNTBweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5tYXQtY2FyZC1jb250ZW50IHtcbiAgbWFyZ2luLXRvcDogNTBweDtcbn0iXX0= */"
+module.exports = "p {\n  text-align: center; }\n\nmat-card {\n  padding: 50px !important;\n  max-width: 100%;\n  margin: 0 100px; }\n\nback-button {\n  z-index: 3;\n  position: fixed;\n  left: 0;\n  top: 0; }\n\nh1 {\n  background-color: rgba(234, 234, 234, 0.9);\n  text-align: center;\n  font-size: 50px;\n  border-radius: 60px;\n  padding: 25px;\n  min-width: 350px;\n  border-color: black;\n  border-width: 2px !important;\n  border: solid;\n  margin-top: 100px;\n  margin-bottom: 15px; }\n\nmat-chip-list mat-chip {\n  border-width: 1.5px !important;\n  padding: 15px;\n  min-height: 40px;\n  border-radius: 20px; }\n\n.image-overlay-container {\n  position: absolute; }\n\n.chip-list mat-chip {\n  background-color: rgba(234, 234, 234, 0.9) !important; }\n\n.website-url {\n  text-align: center;\n  margin: 10px; }\n\n.website-url a {\n    color: black;\n    text-decoration: none;\n    transition: color 0.3s ease-out; }\n\n.website-url a:hover {\n    color: red; }\n\n.image-container {\n  margin-top: -100px;\n  position: relative;\n  height: 500px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden; }\n\n.image-container img {\n  flex-shrink: 0;\n  width: 100%; }\n\n.chip {\n  display: inline-flex; }\n\n.card-container {\n  height: 100%; }\n\n.profile-info {\n  align-items: center; }\n\n.info {\n  margin-left: 50px;\n  width: 100%; }\n\n.mat-card-content {\n  margin-top: 50px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JhcmFrL2ZpbmRTQS9zcmMvYXBwL2NvbXBvbmVudHMvY29tcGFueS1wYWdlL2NvbXBhbnktcGFnZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGtCQUFrQixFQUFBOztBQUdwQjtFQUNFLHdCQUF3QjtFQUN4QixlQUFlO0VBQ2YsZUFBZSxFQUFBOztBQUdqQjtFQUNFLFVBQVU7RUFDVixlQUFlO0VBQ2YsT0FBTztFQUNQLE1BQU0sRUFBQTs7QUFHUjtFQUNFLDBDQXBCeUM7RUFxQnpDLGtCQUFrQjtFQUNsQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsbUJBQW1CO0VBQ25CLDRCQUE0QjtFQUM1QixhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLG1CQUFtQixFQUFBOztBQUdyQjtFQUVJLDhCQUE4QjtFQUM5QixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLG1CQUFtQixFQUFBOztBQUl2QjtFQUNFLGtCQUFrQixFQUFBOztBQUdwQjtFQUVJLHFEQUE4QyxFQUFBOztBQUlsRDtFQUNFLGtCQUFrQjtFQUNsQixZQUFZLEVBQUE7O0FBRmQ7SUFLSSxZQUFZO0lBQ1oscUJBQXFCO0lBSXJCLCtCQUErQixFQUFBOztBQVZuQztJQWNJLFVBQVUsRUFBQTs7QUFJZDtFQUNFLGtCQUFrQjtFQUNsQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGdCQUFnQixFQUFBOztBQUdsQjtFQUNFLGNBQWM7RUFDZCxXQUFXLEVBQUE7O0FBR2I7RUFDRSxvQkFBb0IsRUFBQTs7QUFHdEI7RUFDRSxZQUFZLEVBQUE7O0FBR2Q7RUFDRSxtQkFBbUIsRUFBQTs7QUFHckI7RUFDRSxpQkFBaUI7RUFDakIsV0FBVyxFQUFBOztBQUdiO0VBQ0UsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NvbXBhbnktcGFnZS9jb21wYW55LXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyMzQsIDIzNCwgMjM0LCAwLjkpO1xuXG5wIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5tYXQtY2FyZCB7XG4gIHBhZGRpbmc6IDUwcHggIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBtYXJnaW46IDAgMTAwcHg7XG59XG5cbmJhY2stYnV0dG9uIHtcbiAgei1pbmRleDogMztcbiAgcG9zaXRpb246IGZpeGVkO1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG59XG5cbmgxIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJhY2tncm91bmQtY29sb3I7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA2MHB4O1xuICBwYWRkaW5nOiAyNXB4O1xuICBtaW4td2lkdGg6IDM1MHB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xuICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xuICBib3JkZXI6IHNvbGlkO1xuICBtYXJnaW4tdG9wOiAxMDBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTVweDtcbn1cblxubWF0LWNoaXAtbGlzdCB7XG4gIG1hdC1jaGlwIHtcbiAgICBib3JkZXItd2lkdGg6IDEuNXB4ICFpbXBvcnRhbnQ7XG4gICAgcGFkZGluZzogMTVweDtcbiAgICBtaW4taGVpZ2h0OiA0MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gIH1cbn1cblxuLmltYWdlLW92ZXJsYXktY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG4uY2hpcC1saXN0IHtcbiAgbWF0LWNoaXAge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRiYWNrZ3JvdW5kLWNvbG9yICFpbXBvcnRhbnQ7XG4gIH1cbn1cblxuLndlYnNpdGUtdXJsIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDEwcHg7XG5cbiAgYSB7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGNvbG9yIDAuM3MgZWFzZS1vdXQ7XG4gICAgLW1vei10cmFuc2l0aW9uOiBjb2xvciAwLjNzIGVhc2Utb3V0O1xuICAgIC1vLXRyYW5zaXRpb246IGNvbG9yIDAuM3MgZWFzZS1vdXQ7XG4gICAgdHJhbnNpdGlvbjogY29sb3IgMC4zcyBlYXNlLW91dDtcbiAgfVxuXG4gIGE6aG92ZXIge1xuICAgIGNvbG9yOiByZWQ7XG4gIH1cbn1cblxuLmltYWdlLWNvbnRhaW5lciB7XG4gIG1hcmdpbi10b3A6IC0xMDBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBoZWlnaHQ6IDUwMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLmltYWdlLWNvbnRhaW5lciBpbWcge1xuICBmbGV4LXNocmluazogMDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5jaGlwIHtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbi5jYXJkLWNvbnRhaW5lciB7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLnByb2ZpbGUtaW5mbyB7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5pbmZvIHtcbiAgbWFyZ2luLWxlZnQ6IDUwcHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ubWF0LWNhcmQtY29udGVudCB7XG4gIG1hcmdpbi10b3A6IDUwcHg7XG59Il19 */"
 
 /***/ }),
 
@@ -345,7 +361,7 @@ var CompanyPageComponent = /** @class */ (function () {
         this.searchService.addTag(tag);
     };
     CompanyPageComponent.prototype.onBackClicked = function () {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/');
     };
     CompanyPageComponent.prototype.buildCompany = function () {
         var _this = this;
@@ -648,7 +664,7 @@ var LineItemModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [ngClass]=\"focus + ' ' + stickMenu\"\n  class=\"search-container ease-background ease-padding ease-height\">\n  <mat-form-field class=\"form-field\" appearance=\"outline\">\n    <mat-label class=\"search-title\">Search</mat-label>\n    <input matInput placeholder=\"Eg. Craft beer\" autocomplete=\"off\"\n      [formControl]=\"searchControl\" (blur)=\"onBlur()\" (focus)=\"onFocus()\">\n  </mat-form-field>\n  <div *ngIf=\"activeTags && activeTags.length > 0\" class=\"tag-container\">\n    <mat-chip-list>\n      <mat-chip *ngFor=\"let tag of activeTags\" color=\"primary\"\n        (click)=\"removeTag(tag)\">#{{tag.name}}\n      </mat-chip>\n    </mat-chip-list>\n  </div>\n</div>\n<ng-container *ngIf=\"showSearchResult && searchResult.length != 0\">\n  <h1 class=\"result-title\">Full results</h1>\n  <div class=\"search-result-container\">\n    <line-item *ngFor=\"let result of searchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (tagClicked)=\"addTag($event)\"\n      (itemSelected)=\"onItemSelected(result)\"></line-item>\n  </div>\n  <ng-container *ngIf=\"suggestionResult.length != 0\">\n    <h2>Suggestions</h2>\n    <line-item *ngFor=\"let result of suggestionResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (itemSelected)=\"onItemSelected(result)\"\n      (tagClicked)=\"addTag($event)\">\n    </line-item>\n  </ng-container>\n  <div *ngIf=\"searchResult.length == 0\" class=\"no-result-container\">\n    <h1 class=\"no-result-title\">Full results</h1>\n    <div *ngIf=\"searchResult.length == 0\" class=\"no-result-text\">\n      <h4>No results for this search, check below</h4>\n      <h5>remove tags for more general search</h5>\n    </div>\n  </div>\n</ng-container>"
+module.exports = "<div [ngClass]=\"focus + ' ' + stickMenu\"\n  class=\"search-container ease-background ease-padding ease-height\">\n  <mat-form-field class=\"form-field\" appearance=\"outline\">\n    <mat-label class=\"search-title\">Search</mat-label>\n    <input matInput placeholder=\"Eg. Craft beer\" autocomplete=\"off\"\n      [formControl]=\"searchControl\" (blur)=\"onBlur()\" (focus)=\"onFocus()\">\n  </mat-form-field>\n  <div *ngIf=\"activeTags && activeTags.length > 0\" class=\"tag-container\">\n    <mat-chip-list>\n      <mat-chip *ngFor=\"let tag of activeTags\" color=\"primary\"\n        (click)=\"removeTag(tag)\">#{{tag.name}}\n      </mat-chip>\n    </mat-chip-list>\n  </div>\n</div>\n<ng-container *ngIf=\" showSearchResult && searchResult.length !=0\">\n  <div class=\"search-result-container\">\n    <line-item *ngFor=\"let result of searchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (tagClicked)=\"addTag($event)\"\n      (itemSelected)=\"onItemSelected(result)\"></line-item>\n  </div>\n  <ng-container *ngIf=\"suggestionResult.length != 0\">\n    <h2>Suggestions</h2>\n    <line-item *ngFor=\"let result of suggestionResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (itemSelected)=\"onItemSelected(result)\"\n      (tagClicked)=\"addTag($event)\">\n    </line-item>\n  </ng-container>\n</ng-container>\n<div *ngIf=\"!searchResult.length && companies.length\"\n  class=\"no-result-container\">\n  <div *ngIf=\"searchResult.length == 0\" class=\"no-result-text\">\n    <h4>No results for this search, check below</h4>\n    <h5 *ngIf=\"activeTags.length\">remove tags for a more general search</h5>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -679,8 +695,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var src_app_services_search_search_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/search/search.service */ "./src/app/services/search/search.service.ts");
-/* harmony import */ var src_app_services_companies_companies_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/companies/companies.service */ "./src/app/services/companies/companies.service.ts");
-
 
 
 
@@ -688,17 +702,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent(companiesService, searchService, router, location) {
-        this.companiesService = companiesService;
+    function SearchComponent(searchService, router, location) {
         this.searchService = searchService;
         this.router = router;
         this.location = location;
+        this.companies = [];
         this.blur = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.searchControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('');
         this.activeTags = [];
         this.stickMenu = 'unstick-menu';
         this.focus = 'search-close';
-        this.companies = [];
         this.tagSearchResult = [];
         this.searchResult = [];
         this.companyNameSearchResult = [];
@@ -708,21 +721,19 @@ var SearchComponent = /** @class */ (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.companiesService.companies.subscribe(function (companies) {
-            _this.searchResult = _this.companies = companies;
-            _this.maybeSetHomePage();
-            _this.buildSearchControl();
-            _this.setParamAndInit();
-            _this.searchService.activeTags$.subscribe(function (actionTags) {
-                _this.activeTags = actionTags;
-                _this.refreshSearchResults();
+        this.searchResult = this.companies;
+        this.maybeSetHomePage();
+        this.buildSearchControl();
+        this.setParamAndInit();
+        this.searchService.activeTags$.subscribe(function (actionTags) {
+            _this.activeTags = actionTags;
+            _this.refreshSearchResults();
+            _this.updateParamsToUrl();
+        });
+        this.router.events.subscribe(function (event) {
+            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"]) {
                 _this.updateParamsToUrl();
-            });
-            _this.router.events.subscribe(function (event) {
-                if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"]) {
-                    _this.updateParamsToUrl();
-                }
-            });
+            }
         });
     };
     SearchComponent.prototype.onBlur = function () {
@@ -739,7 +750,7 @@ var SearchComponent = /** @class */ (function () {
         if (!this.isHomePage && value) {
             this.blur.emit(true);
             this.showSearchResult = true;
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/');
         }
         this.searchValue = value;
         this.refreshSearchResults();
@@ -756,7 +767,7 @@ var SearchComponent = /** @class */ (function () {
         this.refreshSearchResults();
     };
     SearchComponent.prototype.onItemSelected = function (company) {
-        this.router.navigateByUrl('/brand/' + company.name);
+        this.router.navigateByUrl('/' + company.name);
     };
     SearchComponent.prototype.onWindowScroll = function () {
         var number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -915,6 +926,10 @@ var SearchComponent = /** @class */ (function () {
         return url;
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Array)
+    ], SearchComponent.prototype, "companies", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], SearchComponent.prototype, "blur", void 0);
@@ -930,8 +945,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/components/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/components/search/search.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_companies_companies_service__WEBPACK_IMPORTED_MODULE_6__["CompaniesService"],
-            src_app_services_search_search_service__WEBPACK_IMPORTED_MODULE_5__["SearchService"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_search_search_service__WEBPACK_IMPORTED_MODULE_5__["SearchService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
     ], SearchComponent);
@@ -1078,7 +1092,7 @@ var CompaniesService = /** @class */ (function () {
     Object.defineProperty(CompaniesService.prototype, "companies", {
         get: function () {
             var _this = this;
-            if (this._companies.length != 0) {
+            if (this._companies.length) {
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this._companies);
             }
             var spreadSheetData = this.spreadSheetService.getSheetData();
@@ -1090,6 +1104,12 @@ var CompaniesService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    CompaniesService.prototype.initCompanies = function () {
+        var _this = this;
+        this.companies.subscribe(function (companies) {
+            _this._companies = companies;
+        });
+    };
     CompaniesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -1125,11 +1145,11 @@ var SearchService = /** @class */ (function () {
     function SearchService(router) {
         var _this = this;
         this.router = router;
-        this._isHomePage = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
+        this._isHomePage = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](true);
         this.activeTags = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
         this._activeTags = [];
         this.router.events.subscribe(function (event) {
-            if (event.urlAfterRedirects == '/home') {
+            if (event.urlAfterRedirects == '/') {
                 _this._isHomePage.next(true);
                 return;
             }
