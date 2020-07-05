@@ -18,7 +18,7 @@ export class LineItemComponent {
   @Input() searchValue: string;
 
   @Output() tagClicked = new EventEmitter<string>();
-  @Output() itemSelected = new EventEmitter<Company>();
+  @Output() itemSelected = new EventEmitter();
 
   constructor() { }
 
@@ -26,7 +26,7 @@ export class LineItemComponent {
     this.tagClicked.emit(tag);
   }
 
-  onCardClick(company: Company): void {
-    this.itemSelected.emit(company);
+  onCardClick(): void {
+    this.itemSelected.emit();
   }
 }

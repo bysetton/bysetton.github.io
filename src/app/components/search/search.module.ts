@@ -19,8 +19,5 @@ import { LineItemModule } from './presentationals/line-item/line-item.module';
     LineItemModule,
   ],
   exports: [SearchComponent],
-  providers: [
-    Window
-  ],
 })
 export class SearchModule { }
