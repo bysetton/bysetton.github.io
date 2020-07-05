@@ -7,6 +7,11 @@ mat-card {
   cursor: pointer;
 }
 
+mat-chip {
+  font-size: 12px;
+  padding: 5px 7px;
+}
+
 .mat-chip-list-wrapper {
   margin: 10px;
 }
@@ -18,7 +23,7 @@ img {
 .image-container {
   border-radius: 4px;
   width: 70%;
-  height: 130px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +44,9 @@ img {
 }
 
 .profile-info {
-  align-items: center;
+  h2 {
+    margin: 0 0 10px;
+  }
   display: flex;
 }
 

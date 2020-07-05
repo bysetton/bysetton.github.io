@@ -1,6 +1,5 @@
 .background-curtain {
   background-color: #EAEAEA;
-  z-index: 2;
   min-height: 100%;
   padding-top: 100px;
   margin: 0 150px;
@@ -21,8 +20,8 @@
 }
 
 .background-image img {
+  z-index: -1;
   position: fixed;
-  z-index: 1;
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;

@@ -1,8 +1,8 @@
-<div class='background-image'>
-  <img
-    src="https://i.pinimg.com/originals/f6/83/68/f683689acb8f3382022a27ceb5f66b3d.jpg" />
-  <div class="background-curtain">
-    <search (blur)="onSearchFocus($event)"></search>
-    <router-outlet *ngIf="!searchFocus"></router-outlet>
+<div class="background-curtain">
+  <div class='background-image'>
+    <img
+      src="https://i.pinimg.com/originals/f6/83/68/f683689acb8f3382022a27ceb5f66b3d.jpg" />
   </div>
+  <search (blur)="onSearchFocus($event)"></search>
+  <router-outlet *ngIf="!searchFocus"></router-outlet>
 </div>
