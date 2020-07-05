@@ -648,7 +648,7 @@ var LineItemModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [ngClass]=\"focus + ' ' + stickMenu\"\n  class=\"search-container ease-background ease-padding ease-height\">\n  <mat-form-field class=\"form-field\">\n    <mat-label class=\"search-title\">Search</mat-label>\n    <input matInput placeholder=\"Eg. Craft beer\" autocomplete=\"off\"\n      [formControl]=\"searchControl\" (blur)=\"onBlur()\" (focus)=\"onFocus()\">\n  </mat-form-field>\n  <div *ngIf=\"activeTags && activeTags.length > 0\" class=\"tag-container\">\n    <mat-chip-list>\n      <mat-chip *ngFor=\"let tag of activeTags\" color=\"primary\"\n        (click)=\"removeTag(tag)\">#{{tag.name}}\n      </mat-chip>\n    </mat-chip-list>\n  </div>\n</div>\n<ng-container *ngIf=\"showSearchResult && searchResult.length != 0\">\n  <h1 class=\"result-title\">Full results</h1>\n  <div class=\"search-result-container\">\n    <line-item *ngFor=\"let result of searchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (tagClicked)=\"addTag($event)\"\n      (itemSelected)=\"onItemSelected(result)\"></line-item>\n  </div>\n  <ng-container\n    *ngIf=\"companyNameSearchResult.length != 0 || aboutSearchResult.length != 0\">\n    <h2>Suggestions</h2>\n    <line-item *ngFor=\"let result of companyNameSearchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (itemSelected)=\"onItemSelected(result)\"\n      (tagClicked)=\"addTag($event)\">\n    </line-item>\n    <line-item *ngFor=\"let result of aboutSearchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (itemSelected)=\"onItemSelected(result)\"\n      (tagClicked)=\"addTag($event)\">\n    </line-item>\n  </ng-container>\n  <div *ngIf=\"searchResult.length == 0\" class=\"no-result-container\">\n    <h1 class=\"no-result-title\">Full results</h1>\n    <div *ngIf=\"searchResult.length == 0\" class=\"no-result-text\">\n      <h4>No results for this search, check below</h4>\n      <h5>remove tags for more general search</h5>\n    </div>\n  </div>\n</ng-container>"
+module.exports = "<div [ngClass]=\"focus + ' ' + stickMenu\"\n  class=\"search-container ease-background ease-padding ease-height\">\n  <mat-form-field class=\"form-field\">\n    <mat-label class=\"search-title\">Search</mat-label>\n    <input matInput placeholder=\"Eg. Craft beer\" autocomplete=\"off\"\n      [formControl]=\"searchControl\" (blur)=\"onBlur()\" (focus)=\"onFocus()\">\n  </mat-form-field>\n  <div *ngIf=\"activeTags && activeTags.length > 0\" class=\"tag-container\">\n    <mat-chip-list>\n      <mat-chip *ngFor=\"let tag of activeTags\" color=\"primary\"\n        (click)=\"removeTag(tag)\">#{{tag.name}}\n      </mat-chip>\n    </mat-chip-list>\n  </div>\n</div>\n<ng-container *ngIf=\"showSearchResult && searchResult.length != 0\">\n  <h1 class=\"result-title\">Full results</h1>\n  <div class=\"search-result-container\">\n    <line-item *ngFor=\"let result of searchResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (tagClicked)=\"addTag($event)\"\n      (itemSelected)=\"onItemSelected(result)\"></line-item>\n  </div>\n  <ng-container *ngIf=\"suggestionResult.length != 0\">\n    <h2>Suggestions</h2>\n    <line-item *ngFor=\"let result of suggestionResult\" [config]=\"result\"\n      [searchValue]=\"searchValue\" (itemSelected)=\"onItemSelected(result)\"\n      (tagClicked)=\"addTag($event)\">\n    </line-item>\n  </ng-container>\n  <div *ngIf=\"searchResult.length == 0\" class=\"no-result-container\">\n    <h1 class=\"no-result-title\">Full results</h1>\n    <div *ngIf=\"searchResult.length == 0\" class=\"no-result-text\">\n      <h4>No results for this search, check below</h4>\n      <h5>remove tags for more general search</h5>\n    </div>\n  </div>\n</ng-container>"
 
 /***/ }),
 
@@ -703,6 +703,7 @@ var SearchComponent = /** @class */ (function () {
         this.searchResult = [];
         this.companyNameSearchResult = [];
         this.aboutSearchResult = [];
+        this.suggestionResult = [];
         this.requiredScrollPos = 50;
     }
     SearchComponent.prototype.ngOnInit = function () {
@@ -738,6 +739,7 @@ var SearchComponent = /** @class */ (function () {
         if (!this.isHomePage && value) {
             this.blur.emit(true);
             this.showSearchResult = true;
+            this.router.navigateByUrl('/home');
         }
         this.searchValue = value;
         this.refreshSearchResults();
@@ -746,10 +748,12 @@ var SearchComponent = /** @class */ (function () {
         if (this.activeTags.find(function (t) { return t.name === tag.name; })) {
             return;
         }
+        this.refreshSearchResults();
         this.searchService.addTag(tag);
     };
     SearchComponent.prototype.removeTag = function (tag) {
         this.searchService.removeTag(tag);
+        this.refreshSearchResults();
     };
     SearchComponent.prototype.onItemSelected = function (company) {
         this.router.navigateByUrl('/brand/' + company.name);
@@ -804,16 +808,30 @@ var SearchComponent = /** @class */ (function () {
         }
     };
     SearchComponent.prototype.refreshSearchResults = function () {
-        if (this.searchValue) {
-            this.searchCompanyName();
-            this.searchAbout();
-            this.searchTags();
-            this.combineSearchResults();
-        }
-        else {
+        if (!this.searchValue && this.activeTags.length == 0) {
             this.searchResult = this.companies;
+            return;
         }
+        this.searchCompanyName();
+        this.searchAbout();
+        this.searchTags();
+        this.combineSearchResults();
         this.filterActiveTags();
+        this.buildSuggestions();
+    };
+    SearchComponent.prototype.buildSuggestions = function () {
+        var _this = this;
+        this.suggestionResult = [];
+        this.companyNameSearchResult.forEach(function (company) {
+            if (_this.suggestionResult.indexOf(company) == -1 && _this.searchResult.indexOf(company) == -1) {
+                _this.suggestionResult.push(company);
+            }
+        });
+        this.aboutSearchResult.forEach(function (company) {
+            if (_this.suggestionResult.indexOf(company) == -1 && _this.searchResult.indexOf(company) == -1) {
+                _this.suggestionResult.push(company);
+            }
+        });
     };
     SearchComponent.prototype.searchCompanyName = function () {
         var _this = this;
@@ -853,10 +871,24 @@ var SearchComponent = /** @class */ (function () {
         if (this.activeTags.length == 0) {
             return;
         }
+        if (this.searchResult.length == 0) {
+            this.searchResult = this.companies;
+        }
         this.searchResult = this.searchResult.filter(function (company) {
-            return company.tags.some(function (tag) {
-                return _this.activeTags.some(function (t) { return t.name == tag.name; });
+            var containsAllTag = true;
+            _this.activeTags.forEach(function (tag) {
+                var tagExists = false;
+                company.tags.forEach(function (companyTag) {
+                    if (companyTag.name == tag.name) {
+                        tagExists = true;
+                    }
+                });
+                containsAllTag = containsAllTag && tagExists;
+                if (!tagExists) {
+                    _this.suggestionResult.push(company);
+                }
             });
+            return containsAllTag;
         });
     };
     SearchComponent.prototype.updateParamsToUrl = function () {
