@@ -32,6 +32,9 @@ $findSA-theme: mat-light-theme($findSA-primary, $findSA-accent, $findSA-warn); /
 // that you are using.
 @include angular-material-theme($findSA-theme);
 /* You can add global styles to this file, and also import other style files */
+$custom-typography: mat-typography-config($font-family: 'BonvenoCF,helvetica neue,Arial,sans-serif');
+@include mat-core($custom-typography);
+
 html {
   overflow-y: scroll;
 }
@@ -43,7 +46,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: BonvenoCF,helvetica neue,Arial,sans-serif;
   @media only screen and (max-width: 600px) {
     margin: 0 !important;
   }
@@ -76,8 +79,9 @@ mat-chip {
 
 mat-chip-list {
   mat-chip {
+    font-weight: 800!important;
     border-color: black;
-    border-width: 1px !important;
+    border-width: 2px !important;
     border: solid;
     cursor: pointer !important;
   }

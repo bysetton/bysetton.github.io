@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
   suggestionResult: Company[] = [];
 
   isHomePage: boolean;
-  showSearchResult: boolean;
+  showSearchResult: boolean = true;
 
   private requiredScrollPos: number = 50;
 
@@ -84,7 +84,7 @@ export class SearchComponent implements OnInit {
     if (!this.isHomePage && value) {
       this.blur.emit(true);
       this.showSearchResult = true;
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/');
     }
 
     this.searchValue = value;
@@ -105,7 +105,7 @@ export class SearchComponent implements OnInit {
   }
 
   onItemSelected(company: Company): void {
-    this.router.navigateByUrl('/brand/' + company.name);
+    this.router.navigateByUrl('/' + company.name);
   }
 
   @HostListener("window:scroll", [])

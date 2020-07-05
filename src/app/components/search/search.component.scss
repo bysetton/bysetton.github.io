@@ -1,6 +1,14 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
 
+.spinner-container {
+  margin-top: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 :host ::ng-deep {
   .mat-form-field-label-wrapper {
     top: -1em;

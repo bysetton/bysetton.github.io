@@ -16,7 +16,7 @@ export class SearchService {
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: NavigationEnd) => {
-      if (event.urlAfterRedirects == '/home') {
+      if (event.urlAfterRedirects == '/') {
         this._isHomePage.next(true);
         return;
       }

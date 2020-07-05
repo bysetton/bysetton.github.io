@@ -38,7 +38,7 @@ export class CompanyPageComponent implements OnInit {
   }
 
   onBackClicked(): void {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/');
   }
 
   private buildCompany(): void {
