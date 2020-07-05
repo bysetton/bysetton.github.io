@@ -23,6 +23,7 @@ h1 {
   border-color: black;
   border-width: 2px !important;
   border: solid;
+  margin-top: 0;
   margin-bottom: 15px;
 }
 
@@ -64,8 +65,9 @@ mat-chip-list {
 }
 
 .image-container {
+  margin-top: -75px;
   position: relative;
-  height: 350px;
+  height: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
