@@ -21,15 +21,12 @@ html {
 
 body,
 html {
-  @media only screen and (max-width: 600px) {
-    height: 100%;
-  }
+  height: 100%;
 }
 
 body {
-  margin: 130px 50px 50px;
+  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #EAEAEA;
   @media only screen and (max-width: 600px) {
     // background-color: #FFF;
     margin: 0 !important;

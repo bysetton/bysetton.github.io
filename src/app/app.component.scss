@@ -1,0 +1,29 @@
+.background-curtain {
+  background-color: #EAEAEA;
+  z-index: 2;
+  min-height: 100%;
+  padding-top: 100px;
+  margin: 0 150px;
+  -webkit-box-shadow: 0 0 5px 12px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0 0 5px 12px rgba(0,0,0,0.75);
+  box-shadow: 0 0 5px 12px rgba(0,0,0,0.75);
+  @media only screen and (max-width: 860px) {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0;
+  }
+}
+
+.background-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background-image img {
+  position: fixed;
+  z-index: 1;
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
