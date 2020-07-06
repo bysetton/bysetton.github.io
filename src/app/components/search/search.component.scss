@@ -152,7 +152,11 @@ h4 {
   line-item {
     width: 50%;
     max-width: 400px;
+    @media only screen and (max-width: 900px) {
+      display: flex;
+    }
     @media only screen and (max-width: 750px) {
+      display: unset;
       width: 100%;
     }
   }
