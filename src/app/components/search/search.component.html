@@ -13,24 +13,26 @@
     </mat-chip-list>
   </div>
 </div>
-<ng-container *ngIf=" showSearchResult && searchResult.length !=0">
-  <div class="search-result-container">
-    <line-item *ngFor="let result of searchResult" [config]="result"
-      [searchValue]="searchValue" (tagClicked)="addTag($event)"
-      (itemSelected)="onItemSelected(result)"></line-item>
-  </div>
-  <ng-container *ngIf="suggestionResult.length != 0">
-    <h2>Suggestions</h2>
-    <line-item *ngFor="let result of suggestionResult" [config]="result"
-      [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
-      (tagClicked)="addTag($event)">
-    </line-item>
+<div class="results-container">
+  <ng-container *ngIf=" showSearchResult && searchResult.length !=0">
+    <div class="search-result-container">
+      <line-item *ngFor="let result of searchResult" [config]="result"
+        [searchValue]="searchValue" (tagClicked)="addTag($event)"
+        (itemSelected)="onItemSelected(result)"></line-item>
+    </div>
+    <ng-container *ngIf="suggestionResult.length != 0">
+      <h2>Suggestions</h2>
+      <line-item *ngFor="let result of suggestionResult" [config]="result"
+        [searchValue]="searchValue" (itemSelected)="onItemSelected(result)"
+        (tagClicked)="addTag($event)">
+      </line-item>
+    </ng-container>
   </ng-container>
-</ng-container>
-<div *ngIf="!searchResult.length && companies.length"
-  class="no-result-container">
-  <div *ngIf="searchResult.length == 0" class="no-result-text">
-    <h4>No results for this search, check below</h4>
-    <h5 *ngIf="activeTags.length">remove tags for a more general search</h5>
+  <div *ngIf="!searchResult.length && companies.length"
+    class="no-result-container">
+    <div *ngIf="searchResult.length == 0" class="no-result-text">
+      <h4>No results for this search, check below</h4>
+      <h5 *ngIf="activeTags.length">remove tags for a more general search</h5>
+    </div>
   </div>
 </div>

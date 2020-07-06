@@ -8,16 +8,23 @@
 
 .background-curtain {
   background-color: #EAEAEA;
-  min-height: 100%;
-  padding-top: 100px;
+  max-width: 1000px;
+  width: 1000px;
+  padding: 100px 25px;
   margin: 0 150px;
   -webkit-box-shadow: 0 0 5px 12px rgba(0,0,0,0.55);
   -moz-box-shadow: 0 0 5px 12px rgba(0,0,0,0.55);
   box-shadow: 0 0 5px 12px rgba(0,0,0,0.55);
   @media only screen and (max-width: 600px) {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(170, 170, 170, 0.5);
     margin: 0;
   }
+}
+
+.curtain-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
 }
 
 .background-image {
