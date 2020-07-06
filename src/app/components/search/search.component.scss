@@ -37,6 +37,9 @@ $search-padding-reduced: 0 50px 0;
 .tag-container {
   width: inherit;
   margin: 0 100px;
+  @media only screen and (max-width: 600px) {
+    margin: 10px 20px;
+  }
 }
 
 .search-container {
@@ -64,27 +67,24 @@ $search-padding-reduced: 0 50px 0;
 }
 
 .stick-menu {
-  padding: $search-padding-reduced;
   background-color: rgba(255, 0, 0, 0.5);
-}
-
-.unstick-menu {
-  padding: $search-padding-normal;
-  background-color: red;
-}
-
-.search-open {
-  padding: $search-padding-normal;
-  background-color: red;
-
-  input {
-    margin-bottom: 0;
-    font-size: 37px;
+  padding: $search-padding-reduced;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
   }
 }
 
-.search-closed {
+.unstick-menu {
+  background-color: red;
+  padding: $search-padding-normal;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+}
+
+.search-open {
   input {
+    margin-bottom: 0;
     font-size: 37px;
   }
 }
@@ -148,10 +148,11 @@ h4 {
   display: flex;
   flex-flow: row wrap;
   // flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
   line-item {
-    width: calc(50% - 80px);
+    width: 50%;
+    max-width: 400px;
     @media only screen and (max-width: 600px) {
       width: 100%;
     }
