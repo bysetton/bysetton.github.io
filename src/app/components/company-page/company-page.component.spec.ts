@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CompanyPageComponent } from './company-page.component';
+import { CompanyNotFoundModule } from './company-not-found/company-not-found.module';
 
 describe('CompanyPageComponent', () => {
   let component: CompanyPageComponent;
@@ -8,9 +9,10 @@ describe('CompanyPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CompanyPageComponent ]
+      declarations: [CompanyPageComponent],
+      imports: [CompanyNotFoundModule,],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

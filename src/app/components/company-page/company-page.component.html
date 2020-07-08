@@ -1,5 +1,5 @@
-<back-button (clicked)="onBackClicked()"></back-button>
 <div class="card-container" *ngIf="company">
+  <back-button (clicked)="onBackClicked()"></back-button>
   <div class="image-container">
     <div class='image-overlay-container'>
       <h1>{{company.name}}</h1>
@@ -23,3 +23,5 @@
     </p>
   </div>
 </div>
+
+<company-not-found *ngIf="!company"></company-not-found>
