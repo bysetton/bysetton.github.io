@@ -50,6 +50,7 @@ export class CompanyPageComponent implements OnInit {
   private getParam(): void {
     this.route.params.subscribe(params => {
       this.companyParam = params['company'];
+      console.log(this.companyParam);
       this.buildCompany();
     });
   }

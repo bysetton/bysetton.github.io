@@ -24,4 +24,6 @@
   </div>
 </div>
 
-<company-not-found *ngIf="!company"></company-not-found>
+<company-not-found *ngIf="!company && companyParam"
+  [companyName]="companyParam">
+</company-not-found>
