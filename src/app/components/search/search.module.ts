@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { SearchComponent } from './search.component';
 import { LineItemModule } from './presentationals/line-item/line-item.module';
+import { MobileSearchModule } from './presentationals/mobile-search/mobile-search.module';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -15,6 +16,7 @@ import { LineItemModule } from './presentationals/line-item/line-item.module';
     MatInputModule,
     MatChipsModule,
     MatCardModule,
+    MobileSearchModule,
     ReactiveFormsModule,
     LineItemModule,
   ],

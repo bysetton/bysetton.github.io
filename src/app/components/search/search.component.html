@@ -1,4 +1,5 @@
 <!-- search bar -->
+<mobile-search></mobile-search>
 <div [ngClass]="focus + ' ' + stickMenu"
   class="search-container ease-background ease-padding ease-height">
   <mat-form-field class="form-field" appearance="outline">
@@ -14,7 +15,6 @@
     </mat-chip-list>
   </div>
 </div>
-
 <!-- results -->
 <div class="results-container">
   <ng-container *ngIf=" showSearchResult && searchResult.length !=0">

@@ -1,6 +1,16 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
 
+mobile-search {
+  top: 50px;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
+}
+
 .results-container {
   margin-left: 25px;
   margin-right: 25px;
@@ -65,6 +75,10 @@ $search-padding-reduced: 0 50px 0;
     -moz-transition: font-size 0.5s ease-out;
     -o-transition: font-size 0.5s ease-out;
     transition: font-size 0.5s ease-out;
+  }
+  display: block;
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 }
 
