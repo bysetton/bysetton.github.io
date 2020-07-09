@@ -25,21 +25,23 @@ export class SpreadSheetService {
             }
             const row = rowData[entry].values;
             const tags = [] as Tag[];
-            row[6].formattedValue.split(',').forEach((tag) => {
-              tags.push({ name: tag });
-            });
+            if (row[6]) {
+              row[6].formattedValue.split(',').forEach((tag) => {
+                tags.push({ name: tag });
+              });
+            }
             let company = {
-              name: row[1].formattedValue,
-              websiteUrl: row[2].formattedValue,
-              websiteDisplay: row[3].formattedValue,
-              email: row[4].formattedValue,
-              product: row[5].formattedValue,
+              name: row[1] ? row[1].formattedValue : '',
+              websiteUrl: row[2] ? row[2].formattedValue : '',
+              websiteDisplay: row[3] ? row[3].formattedValue : '',
+              email: row[4] ? row[4].formattedValue : '',
+              product: row[5] ? row[5].formattedValue : '',
               tags: tags,
-              img: `/assets/imgs/${row[7].formattedValue}`,
-              location: row[8].formattedValue,
-              delivery: row[9].formattedValue,
-              about: row[10].formattedValue,
-              instagram: row[11].formattedValue,
+              img: row[7] ? `/assets/imgs/${row[7].formattedValue}` : '',
+              location: row[8] ? row[8].formattedValue : '',
+              delivery: row[9] ? row[9].formattedValue : '',
+              about: row[10] ? row[10].formattedValue : '',
+              instagram: row[11] ? row[11].formattedValue : '',
             } as Company;
             returnArray.push(company);
           }
