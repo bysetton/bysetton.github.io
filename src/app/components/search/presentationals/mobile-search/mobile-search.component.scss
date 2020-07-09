@@ -90,13 +90,13 @@
     }
 
     &:focus {
-      width: 300px;
+      width: 290px;
       opacity: 1;
       cursor: text;
     }
 
     &:focus ~ .search {
-      right: -250px;
+      right: -240px;
       background: #151515;
       z-index: 6;
 
