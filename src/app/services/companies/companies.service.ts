@@ -29,7 +29,6 @@ export class CompaniesService {
       tags: [{ name: 'Beer' }, { name: 'Black owned' }],
       websiteDisplay: 'ukhambabeerworx.co.za',
       websiteUrl: 'https://www.ukhambabeerworx.co.za',
-      instagram: '_tapi_tapi',
     },
     {
       img: '/assets/imgs/humble-coffee-profile.jpeg',
@@ -37,7 +36,6 @@ export class CompaniesService {
       about: 'TODO TODO TODO TODO TODO',
       tags: [{ name: 'Coffee' }, { name: 'Female owned' }],
       websiteDisplay: 'humblecoffee.co.za',
-      websiteUrl: 'https://humblecoffee.co.za/',
       instagram: '_tapi_tapi',
     },
     {
@@ -46,9 +44,6 @@ export class CompaniesService {
       about: 'TODO TODO TODO TODO TODO',
       tags: [{ name: 'female owned' }, { name: 'black owned' }],
       websiteDisplay: 'jffrooftopfarm.business.site',
-      websiteUrl: 'https://jffrooftopfarm.business.site/',
-      instagram: '_tapi_tapi',
-
     },
     {
       img: '/assets/imgs/the-nest-profile.jpg',

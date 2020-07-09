@@ -1,4 +1,4 @@
-<div class="card-container" *ngIf="company">
+<ng-container *ngIf="company">
   <back-button (clicked)="onBackClicked()"></back-button>
   <div class="image-container">
     <img
@@ -13,22 +13,24 @@
     </mat-chip-list>
   </div>
   <div class="profile-info">
-    <div *ngIf="company.websiteUrl && company.websiteDisplay"
-      class="website-url">
-      <mat-icon>language</mat-icon>
-      <a [href]="company.websiteUrl"
-        target="_blank">{{company.websiteDisplay}}</a>
-    </div>
-    <div *ngIf="company.instagram" class="instagram">
-      <i class="fa fa-instagram" style="font-size:24px"></i>
-      <a href="https://www.instagram.com/{{company.instagram}}"
-        target="_blank">{{company.instagram}}</a>
-    </div>
+    <a *ngIf="company.websiteUrl && company.websiteDisplay"
+      [href]="company.websiteUrl" target="_blank">
+      <div class="website-url">
+        <mat-icon>language</mat-icon>
+        {{company.websiteDisplay}}
+      </div>
+    </a>
+    <a href="https://www.instagram.com/{{company.instagram}}" target="_blank">
+      <div *ngIf="company.instagram" class="instagram">
+        <i class="fa fa-instagram" style="font-size:24px"></i>
+        {{company.instagram}}
+      </div>
+    </a>
     <p>
       {{company.about}}
     </p>
   </div>
-</div>
+</ng-container>
 
 <company-not-found *ngIf="!company && companyParam"
   [companyName]="companyParam">
