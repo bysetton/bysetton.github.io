@@ -75,15 +75,17 @@ export class CompaniesService {
 
   get companies(): Observable<Company[]> {
 
-    if (this._companies.length) {
-      return of(this._companies);
-    }
+    return of(this._companies_old);
 
-    const spreadSheetData = this.spreadSheetService.getSheetData();
-    spreadSheetData.subscribe((companies) => {
-      this._companies = companies;
-    });
-    return spreadSheetData;
+    // if (this._companies.length) {
+    //   return of(this._companies);
+    // }
+    //
+    // const spreadSheetData = this.spreadSheetService.getSheetData();
+    // spreadSheetData.subscribe((companies) => {
+    //   this._companies = companies;
+    // });
+    // return spreadSheetData;
   }
 
   initCompanies(): void {

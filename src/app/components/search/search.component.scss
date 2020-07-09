@@ -1,6 +1,11 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
 
+.results-container {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 :host ::ng-deep {
   .mat-form-field-label-wrapper {
     top: -1em;
