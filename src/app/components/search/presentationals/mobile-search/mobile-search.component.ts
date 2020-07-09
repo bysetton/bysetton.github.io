@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mobile-search',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-search.component.scss']
 })
 export class MobileSearchComponent implements OnInit {
+
+  @Input() control: FormControl;
 
   constructor() { }
 
