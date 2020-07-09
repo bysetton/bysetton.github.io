@@ -63,9 +63,17 @@ mat-chip-list {
 .website-url {
   text-align: center;
   margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out;
+  -o-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  font-size: 20px;
 
   a {
-    font-size: 25px;
     color: black;
     text-decoration: none;
     -webkit-transition: color 0.3s ease-out;
@@ -73,10 +81,9 @@ mat-chip-list {
     -o-transition: color 0.3s ease-out;
     transition: color 0.3s ease-out;
   }
-  -webkit-transition: color 0.3s ease-out;
-  -moz-transition: color 0.3s ease-out;
-  -o-transition: color 0.3s ease-out;
-  transition: color 0.3s ease-out;
+  @media only screen and (max-width: $mobile-break-point) {
+    flex-direction: column;
+  }
 }
 
 .instagram a:hover,
@@ -132,7 +139,7 @@ mat-chip-list {
 }
 
 .profile-info {
-  margin-top: $overlay-margin +50px;
+  margin: ($overlay-margin + 50px) 20px 0;
   align-items: center;
 }
 
