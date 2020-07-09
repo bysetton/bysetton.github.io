@@ -1205,16 +1205,16 @@ var CompaniesService = /** @class */ (function () {
     }
     Object.defineProperty(CompaniesService.prototype, "companies", {
         get: function () {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this._companies_old);
-            // if (this._companies.length) {
-            //   return of(this._companies);
-            // }
-            //
-            // const spreadSheetData = this.spreadSheetService.getSheetData();
-            // spreadSheetData.subscribe((companies) => {
-            //   this._companies = companies;
-            // });
-            // return spreadSheetData;
+            // return of(this._companies_old);
+            var _this = this;
+            if (this._companies.length) {
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this._companies);
+            }
+            var spreadSheetData = this.spreadSheetService.getSheetData();
+            spreadSheetData.subscribe(function (companies) {
+                _this._companies = companies;
+            });
+            return spreadSheetData;
         },
         enumerable: true,
         configurable: true
