@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
   @Output() blur = new EventEmitter<boolean>();
 
   searchControl = new FormControl('');
+  placeHolder = 'Eg. Craft beer';
 
   activeTags: Tag[] = [];
   searchValue: string;

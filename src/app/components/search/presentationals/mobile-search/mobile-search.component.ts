@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class MobileSearchComponent implements OnInit {
 
   @Input() control: FormControl;
+  @Input() placeHolder: string = '';
 
   constructor() { }
 
