@@ -1,16 +1,16 @@
 <div class="card-container" *ngIf="company">
   <back-button (clicked)="onBackClicked()"></back-button>
   <div class="image-container">
-    <div class='image-overlay-container'>
-      <h1>{{company.name}}</h1>
-      <mat-chip-list class="chip-list">
-        <mat-chip *ngFor="let tag of company.tags" color="primary" selected
-          (click)="hashtagClicked(tag)" class="chip">{{tag.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
     <img
       [src]="company.img || 'https://i.pinimg.com/originals/82/1a/a8/821aa80c546ac7d554e4ac0de0e95cb8.jpg'">
+  </div>
+  <div class='image-overlay-container'>
+    <h1>{{company.name}}</h1>
+    <mat-chip-list class="chip-list">
+      <mat-chip *ngFor="let tag of company.tags" color="primary" selected
+        (click)="hashtagClicked(tag)" class="chip">{{tag.name}}
+      </mat-chip>
+    </mat-chip-list>
   </div>
   <div class="profile-info">
     <div class="website-url">

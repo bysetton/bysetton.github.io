@@ -1,4 +1,7 @@
 $background-color: rgba(234, 234, 234, 0.9);
+$image-height: 500px;
+$overlay-margin: 100px;
+$mobile-break-point: 600px;
 
 p {
   text-align: center;
@@ -23,12 +26,10 @@ h1 {
   font-size: 50px;
   border-radius: 60px;
   padding: 25px;
-  min-width: 350px;
   border-color: black;
   border-width: 2px !important;
   border: solid;
-  margin-top: 100px;
-  margin-bottom: 15px;
+  margin: 100px 25px 15px;
 }
 
 mat-chip-list {
@@ -41,7 +42,15 @@ mat-chip-list {
 }
 
 .image-overlay-container {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -$image-height + $overlay-margin 0 0;
+  width: 100%;
+  position: relative;
+  @media only screen and (max-width: $mobile-break-point) {
+    margin-top: -$image-height + $overlay-margin - 50px;
+  }
 }
 
 .chip-list {
@@ -69,18 +78,36 @@ mat-chip-list {
 }
 
 .image-container {
-  margin-top: -100px;
+  margin-top: -$overlay-margin;
   position: relative;
-  height: 500px;
+  height: $image-height;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  img {
+    min-height: 100%;
+  }
 }
 
-.image-container img {
-  flex-shrink: 0;
+.image-container:after {
+  content: '\A';
+  position: absolute;
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 1;
+}
+
+.img-cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  margin-top: -$image-height;
 }
 
 .chip {
@@ -92,6 +119,7 @@ mat-chip-list {
 }
 
 .profile-info {
+  margin-top: $overlay-margin +50px;
   align-items: center;
 }
 
