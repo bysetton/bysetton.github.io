@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { CompanyPageComponent } from './company-page.component';
 import { BackButtonModule } from '../common/back-button/back-button.module';
@@ -17,6 +18,7 @@ import { CompanyNotFoundModule } from './presentationals/company-not-found/compa
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
+    MatIconModule,
   ],
   exports: [CompanyPageComponent],
 })

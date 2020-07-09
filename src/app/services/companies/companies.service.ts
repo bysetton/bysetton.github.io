@@ -20,6 +20,7 @@ export class CompaniesService {
       tags: [{ name: 'Black owned' }, { name: 'Cape Town' }],
       websiteDisplay: 'tapitapi.co.za',
       websiteUrl: 'https://www.tapitapi.co.za',
+      instagram: '_tapi_tapi',
     },
     {
       name: 'Ukhamba Beerworx',
@@ -28,6 +29,7 @@ export class CompaniesService {
       tags: [{ name: 'Beer' }, { name: 'Black owned' }],
       websiteDisplay: 'ukhambabeerworx.co.za',
       websiteUrl: 'https://www.ukhambabeerworx.co.za',
+      instagram: '_tapi_tapi',
     },
     {
       img: '/assets/imgs/humble-coffee-profile.jpeg',
@@ -36,6 +38,7 @@ export class CompaniesService {
       tags: [{ name: 'Coffee' }, { name: 'Female owned' }],
       websiteDisplay: 'humblecoffee.co.za',
       websiteUrl: 'https://humblecoffee.co.za/',
+      instagram: '_tapi_tapi',
     },
     {
       name: 'JFF',
@@ -44,6 +47,8 @@ export class CompaniesService {
       tags: [{ name: 'female owned' }, { name: 'black owned' }],
       websiteDisplay: 'jffrooftopfarm.business.site',
       websiteUrl: 'https://jffrooftopfarm.business.site/',
+      instagram: '_tapi_tapi',
+
     },
     {
       img: '/assets/imgs/the-nest-profile.jpg',
@@ -52,6 +57,8 @@ export class CompaniesService {
       tags: [{ name: 'female owned' }, { name: 'black owned' }],
       websiteDisplay: 'thenestspace.co.za',
       websiteUrl: 'http://thenestspace.co.za',
+      instagram: '_tapi_tapi',
+
     },
     {
       img: '/assets/imgs/native-nosi-profile.png',
@@ -60,6 +67,7 @@ export class CompaniesService {
       tags: [{ name: 'female owned' }, { name: 'black owned' }],
       websiteDisplay: 'nativenosi.co.za',
       websiteUrl: 'https://nativenosi.co.za/',
+      instagram: '_tapi_tapi',
     },
     {
       img: '/assets/imgs/tolokazi-beer-profile.jpeg',
@@ -68,6 +76,7 @@ export class CompaniesService {
       tags: [{ name: 'female owned' }, { name: 'black owned' }],
       websiteDisplay: 'ukhambabeerworx.co.za',
       websiteUrl: 'https://www.ukhambabeerworx.co.za',
+      instagram: '_tapi_tapi',
     },
   ] as Company[];
 

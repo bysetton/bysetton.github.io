@@ -59,11 +59,13 @@ mat-chip-list {
   }
 }
 
+.instagram,
 .website-url {
   text-align: center;
   margin: 10px;
 
   a {
+    font-size: 25px;
     color: black;
     text-decoration: none;
     -webkit-transition: color 0.3s ease-out;
@@ -71,10 +73,21 @@ mat-chip-list {
     -o-transition: color 0.3s ease-out;
     transition: color 0.3s ease-out;
   }
+  -webkit-transition: color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out;
+  -o-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+}
 
-  a:hover {
-    color: red;
-  }
+.instagram a:hover,
+.instagram:hover,
+.website-url a:hover,
+.website-url:hover {
+  color: red;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  -o-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
 }
 
 .image-container {

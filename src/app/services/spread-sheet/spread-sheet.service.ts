@@ -38,7 +38,8 @@ export class SpreadSheetService {
               img: `/assets/imgs/${row[7].formattedValue}`,
               location: row[8].formattedValue,
               delivery: row[9].formattedValue,
-              about: 'TODO abouts',
+              about: row[10].formattedValue,
+              instagram: row[11].formattedValue,
             } as Company;
             returnArray.push(company);
           }

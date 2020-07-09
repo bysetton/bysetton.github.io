@@ -10,6 +10,7 @@ export interface Company {
   location: string;
   delivery: boolean;
   about: string;
+  instagram: string;
 }
 
 export interface Tag {
