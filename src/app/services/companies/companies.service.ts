@@ -79,7 +79,10 @@ export class CompaniesService {
 
   get companies(): Observable<Company[]> {
 
-    // return of(this._companies_old);
+    if (location.hostname.includes('localhost') || location.hostname.includes('127.0.0.1')) {
+      return of(this._companies_old);
+    }
+
 
     if (this._companies.length) {
       return of(this._companies);
