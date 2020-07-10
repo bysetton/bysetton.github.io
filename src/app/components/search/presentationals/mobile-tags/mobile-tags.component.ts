@@ -17,11 +17,8 @@ export class MobileTagsComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    console.log('click');
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.sideBarExpanded = false;
-    } else {
-      console.log(event.target);
     }
   }
 
@@ -35,13 +32,4 @@ export class MobileTagsComponent {
 
     this.deleteTag.emit(tag);
   }
-
-  ontagSideBarClicked(): void {
-    console.log('side bar clicked');
-  }
-
-  onClick(): void {
-    console.log('clicked ');
-  }
-
 }
