@@ -7,7 +7,7 @@
 }
 
 .background-curtain {
-  background-color: rgba(181, 181, 181, 0.95);
+  background-color: rgba(181, 181, 181, 0.5);
   max-width: 1000px;
   min-width: 260px;
   width: 1000px;
@@ -18,7 +18,7 @@
   box-shadow: 0 0 5px 12px rgba(0,0,0,0.55);
   @media only screen and (max-width: 600px) {
     padding: 100px 0;
-    margin: 0 35px;
+    margin: 0;
   }
 }
 

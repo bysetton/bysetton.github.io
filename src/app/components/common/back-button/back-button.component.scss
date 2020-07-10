@@ -1,12 +1,13 @@
 $mobile-break-point: 600px;
 
 :host {
+  z-index: 3;
   position: fixed;
   left: 0;
   top: 0;
   @media only screen and (max-width: $mobile-break-point) {
     z-index: 1;
-    left: 35px;
+    left: 15px;
   }
 }
 
