@@ -1,6 +1,8 @@
-<div class="button-container">
+<div class="button-container" [class.mobileBackFinalPosition]="isTrue">
   <button mat-button (click)="clicked.emit()">
     <mat-icon>arrow_back</mat-icon>
-    Back
+    <span class="back-text">
+      Back
+    </span>
   </button>
 </div>

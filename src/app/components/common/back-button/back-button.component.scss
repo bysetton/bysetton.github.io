@@ -1,8 +1,53 @@
+$mobile-break-point: 600px;
+
+:host {
+  position: fixed;
+  left: 0;
+  top: 0;
+  @media only screen and (max-width: $mobile-break-point) {
+    z-index: 1;
+    left: 35px;
+  }
+}
+
 button {
   border-radius: 20px;
   padding: 2px 17px 2px 14px;
+  @media only screen and (max-width: $mobile-break-point) {
+    padding: 0;
+    min-width: unset;
+
+    mat-icon {
+      color: white;
+      line-height: 36px;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      border-color: black;
+      border-width: 2px;
+      border-style: solid;
+      background-color: red;
+    }
+
+    .back-text {
+      display: none;
+    }
+  }
 }
 
 .button-container {
   margin: 18px;
+  @media only screen and (max-width: $mobile-break-point) {
+    margin: 30px 0 0 5px;
+    -webkit-transition: margin 1s ease-out;
+    -moz-transition: margin 1s ease-out;
+    -o-transition: margin 1s ease-out;
+    transition: margin 1s ease-out;
+  }
+}
+
+.mobileBackFinalPosition {
+  @media only screen and (max-width: $mobile-break-point) {
+    margin: 75px 0 0 5px;
+  }
 }

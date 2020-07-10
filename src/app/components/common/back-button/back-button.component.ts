@@ -9,9 +9,14 @@ export class BackButtonComponent implements OnInit {
 
   @Output() clicked = new EventEmitter();
 
+  isTrue: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.isTrue = true;
+    }, 500);
   }
 
 }
