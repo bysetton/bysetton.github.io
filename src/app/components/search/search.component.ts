@@ -12,6 +12,7 @@ import { Location } from '@angular/common'
 
 import { Company, Tag } from 'src/app/interfaces/company.interface';
 import { SearchService } from 'src/app/services/search/search.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'search',
@@ -42,6 +43,7 @@ export class SearchComponent implements OnInit {
 
   isHomePage: boolean;
   showSearchResult: boolean;
+  showBackButton: boolean = true;
 
   private requiredScrollPos: number = 50;
 
@@ -52,6 +54,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchResult = this.companies;
+    this.maybeShowBackButton();
     this.maybeSetHomePage();
     this.buildSearchControl();
     this.setParamAndInit();
@@ -65,6 +68,16 @@ export class SearchComponent implements OnInit {
         this.updateParamsToUrl();
       }
     });
+  }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (number > this.requiredScrollPos) {
+      this.stickMenu = 'stick-menu';
+    } else {
+      this.stickMenu = 'unstick-menu';
+    }
   }
 
   onBlur() {
@@ -107,14 +120,8 @@ export class SearchComponent implements OnInit {
     this.router.navigateByUrl('/' + company.name);
   }
 
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (number > this.requiredScrollPos) {
-      this.stickMenu = 'stick-menu';
-    } else {
-      this.stickMenu = 'unstick-menu';
-    }
+  onBackClicked(): void {
+    this.router.navigateByUrl('/');
   }
 
   private maybeSetHomePage(): void {
@@ -266,6 +273,17 @@ export class SearchComponent implements OnInit {
       url += 'search=' + this.searchValue;
     }
     return url
+  }
+
+  private maybeShowBackButton(): void {
+    this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe((event: any) => {
+      if (event.url == '/') {
+        this.showBackButton = false;
+        this.isHomePage = true;
+        return;
+      }
+      this.showBackButton = true;
+    });
   }
 
 }

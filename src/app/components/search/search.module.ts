@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 
+import { BackButtonModule } from '../common/back-button/back-button.module';
+
 import { SearchComponent } from './search.component';
 import { LineItemModule } from './presentationals/line-item/line-item.module';
 import { MobileSearchModule } from './presentationals/mobile-search/mobile-search.module';
@@ -12,6 +14,7 @@ import { MobileSearchModule } from './presentationals/mobile-search/mobile-searc
 @NgModule({
   declarations: [SearchComponent],
   imports: [
+    BackButtonModule,
     CommonModule,
     MatInputModule,
     MatChipsModule,

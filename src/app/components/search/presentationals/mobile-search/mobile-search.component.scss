@@ -12,15 +12,12 @@ $mobile-break-point: 600px;
 
 .container {
   position: absolute;
-  margin: -25px 15px 0;
+  margin: -40px 15px 0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   height: 50;
-  @media only screen and (max-width: $mobile-break-point) {
-    // left: 15px;
-  }
 
   .search {
     position: absolute;

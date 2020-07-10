@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'back-button',
@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class BackButtonComponent implements OnInit {
 
+  @Input() show: boolean;
+
   @Output() clicked = new EventEmitter();
 
   isTrue: boolean = false;
@@ -14,9 +16,6 @@ export class BackButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.isTrue = true;
-    }, 500);
   }
 
 }

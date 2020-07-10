@@ -39,7 +39,7 @@ button {
 .button-container {
   margin: 18px;
   @media only screen and (max-width: $mobile-break-point) {
-    margin: 30px 0 0 5px;
+    margin: 15px 0 0 5px;
     -webkit-transition: margin 1s ease-out;
     -moz-transition: margin 1s ease-out;
     -o-transition: margin 1s ease-out;
@@ -49,6 +49,6 @@ button {
 
 .mobileBackFinalPosition {
   @media only screen and (max-width: $mobile-break-point) {
-    margin: 75px 0 0 5px;
+    margin: 60px 0 0 5px;
   }
 }

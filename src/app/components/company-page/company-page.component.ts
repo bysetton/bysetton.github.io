@@ -21,7 +21,6 @@ export class CompanyPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private companiesService: CompaniesService,
     private searchService: SearchService, ) { }
 
@@ -35,10 +34,6 @@ export class CompanyPageComponent implements OnInit {
 
   hashtagClicked(tag: Tag): void {
     this.searchService.addTag(tag);
-  }
-
-  onBackClicked(): void {
-    this.router.navigateByUrl('/');
   }
 
   private buildCompany(): void {
