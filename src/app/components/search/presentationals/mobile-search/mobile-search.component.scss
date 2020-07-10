@@ -6,21 +6,25 @@ $mobile-break-point: 600px;
   box-sizing: border-box;
 }
 
+:host {
+  width: 100%;
+}
+
 .container {
   position: absolute;
-  margin: auto;
+  margin: -25px 15px 0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   height: 100px;
   @media only screen and (max-width: $mobile-break-point) {
-    left: 15px;
+    // left: 15px;
   }
 
   .search {
     position: absolute;
-    margin: 30px 0 0 5px;
+    margin: 5px 5px 0;
     top: 0;
     right: 0;
     bottom: 0;
@@ -73,7 +77,7 @@ $mobile-break-point: 600px;
 
   input {
     position: absolute;
-    margin: auto;
+    // margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
@@ -99,7 +103,7 @@ $mobile-break-point: 600px;
     }
 
     &:focus {
-      width: 290px;
+      width: 100%;
       opacity: 1;
       cursor: text;
     }
