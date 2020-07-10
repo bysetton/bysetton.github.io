@@ -1,5 +1,11 @@
+$background-color: rgba(234, 234, 234, 0.9);
+
 :host {
   z-index: 5;
+}
+
+mat-chip {
+  background-color: $background-color !important;
 }
 
 :host ::ng-deep .mat-chip-list-wrapper {
