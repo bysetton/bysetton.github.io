@@ -1,7 +1,10 @@
 <!-- search bar -->
+<mobile-tags [tags]="activeTags" (deleteTag)="removeTag($event)">
+</mobile-tags>
 <mobile-search [control]="searchControl" [placeHolder]="placeHolder">
 </mobile-search>
 <back-button [show]="showBackButton" (clicked)="onBackClicked()"></back-button>
+
 <div [ngClass]="focus + ' ' + stickMenu"
   class="search-container ease-background ease-padding ease-height">
   <mat-form-field class="form-field" appearance="outline">
@@ -12,7 +15,7 @@
   <div *ngIf="activeTags && activeTags.length > 0" class="tag-container">
     <mat-chip-list>
       <mat-chip *ngFor="let tag of activeTags" color="primary"
-        (click)="removeTag(tag)">#{{tag.name}}
+        (click)="removeTag(tag)">{{tag.name}}
       </mat-chip>
     </mat-chip-list>
   </div>

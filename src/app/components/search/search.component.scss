@@ -1,6 +1,11 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
 
+mobile-tags {
+  position: fixed;
+  width: 100%;
+}
+
 mobile-search {
   top: 50px;
   display: none;

@@ -10,6 +10,7 @@ import { BackButtonModule } from '../common/back-button/back-button.module';
 import { SearchComponent } from './search.component';
 import { LineItemModule } from './presentationals/line-item/line-item.module';
 import { MobileSearchModule } from './presentationals/mobile-search/mobile-search.module';
+import { MobileTagsModule } from './presentationals/mobile-tags/mobile-tags.module';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -20,6 +21,7 @@ import { MobileSearchModule } from './presentationals/mobile-search/mobile-searc
     MatChipsModule,
     MatCardModule,
     MobileSearchModule,
+    MobileTagsModule,
     ReactiveFormsModule,
     LineItemModule,
   ],

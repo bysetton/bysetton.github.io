@@ -124,6 +124,10 @@ export class SearchComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  onDeleteTag(tag: Tag): void {
+    this.removeTag(tag);
+  }
+
   private maybeSetHomePage(): void {
     this.searchService.isHome$().subscribe((isHomePage: boolean) => {
       this.isHomePage = isHomePage;

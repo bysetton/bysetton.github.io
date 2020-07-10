@@ -1,0 +1,31 @@
+:host {
+  z-index: 5;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper {
+  flex-direction: column;
+  align-items: start;
+  position: fixed;
+  float: right;
+  width: 100%;
+}
+
+.tag-side-bar {
+  z-index: 4;
+  position: absolute;
+  margin: -20px 15px 0;
+  top: 40px;
+  right: 30px;
+  -webkit-transition: right 0.5s ease-out;
+  -moz-transition: right 0.5s ease-out;
+  -o-transition: right 0.5s ease-out;
+  transition: right 0.5s ease-out;
+}
+
+.open {
+  right: 105px;
+  -webkit-transition: right 0.5s ease-in;
+  -moz-transition: right 0.5s ease-in;
+  -o-transition: right 0.5s ease-in;
+  transition: right 0.5s ease-in;
+}
