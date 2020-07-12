@@ -1278,7 +1278,6 @@ var SearchComponent = /** @class */ (function () {
     SearchComponent.prototype.maybeShowBackButton = function () {
         var _this = this;
         if (this.router.url != '/' && !this.router.url.startsWith('/?')) {
-            console.log(this.router.url);
             this.showBackButton = true;
             this.isHomePage = false;
         }
