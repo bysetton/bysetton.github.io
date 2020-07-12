@@ -21,7 +21,7 @@ export class SpreadSheetService {
         if (rowData && rowData.length > 0) {
           for (let entry = 1; entry < rowData.length; entry++) {
             if (rowData[entry].values[0].formattedValue == 'FALSE') {
-              // continue;
+              continue;
             }
             if (rowData[entry].values[0].formattedValue == 'END') {
               break;

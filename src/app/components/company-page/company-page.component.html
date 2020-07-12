@@ -26,7 +26,7 @@
           {{company.instagram}}
         </div>
       </a>
-      <p [innerHTML]="company.about">
+      <p [innerHTML]="company.about || ''">
       </p>
     </div>
   </ng-container>

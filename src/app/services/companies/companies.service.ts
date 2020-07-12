@@ -16,7 +16,7 @@ export class CompaniesService {
     {
       img: '/assets/imgs/tapi-tapi-profile.jpeg',
       name: 'Tapi Tapi',
-      about: 'TODO TODO TODO TODO TODO',
+      about: 'Tapi Tapi is an educational initiative that is focused on sharing food and food culture from the African continent, with other Africans and our visitors alike. You can enjoy the familiar flavours of home and try new ones from friends and cultures unknown. We are open for business at the shop at 76 Lower Main Road, Observatory <a target="_blank" href="https://www.tapitapi.co.za/operatinghours">(operating hours)</a> Check out our online <a target="_blank" href="https://www.tapitapi.co.za/shop">store</a> for deliveries and other Tapi Tapi products beyond ice cream.',
       tags: [{ name: 'Black owned' }, { name: 'Cape Town' }],
       websiteDisplay: 'tapitapi.co.za',
       websiteUrl: 'https://www.tapitapi.co.za',
@@ -80,7 +80,7 @@ export class CompaniesService {
   get companies(): Observable<Company[]> {
 
     if (location.hostname.includes('localhost') || location.hostname.includes('127.0.0.1')) {
-      return of(this._companies_old);
+      // return of(this._companies_old);
     }
 
 
