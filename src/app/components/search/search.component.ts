@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
 
   isHomePage: boolean;
   showSearchResult: boolean;
-  showBackButton: boolean = true;
+  showBackButton: boolean = false;
 
   private requiredScrollPos: number = 50;
 
@@ -280,6 +280,13 @@ export class SearchComponent implements OnInit {
   }
 
   private maybeShowBackButton(): void {
+
+    if (this.router.url != '/' && !this.router.url.startsWith('/?')) {
+      console.log(this.router.url);
+      this.showBackButton = true;
+      this.isHomePage = false;
+    }
+
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe((event: any) => {
       if (event.url == '/' || event.url.startsWith('/?')) {
         this.showBackButton = false;
