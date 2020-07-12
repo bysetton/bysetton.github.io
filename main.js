@@ -312,7 +312,7 @@ var BackButtonModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container\">\n  <ng-container *ngIf=\"company\">\n    <div class=\"image-container\">\n      <img\n        [src]=\"company.img || 'https://i.pinimg.com/originals/82/1a/a8/821aa80c546ac7d554e4ac0de0e95cb8.jpg'\">\n    </div>\n    <div class='image-overlay-container'>\n      <h1>{{company.name}}</h1>\n      <mat-chip-list class=\"chip-list\">\n        <mat-chip *ngFor=\"let tag of company.tags\" color=\"primary\" selected\n          (click)=\"hashtagClicked(tag)\" class=\"chip\">{{tag.name}}\n        </mat-chip>\n      </mat-chip-list>\n    </div>\n    <div class=\"profile-info\">\n      <a *ngIf=\"company.websiteUrl && company.websiteDisplay\"\n        [href]=\"company.websiteUrl\" target=\"_blank\">\n        <div class=\"website-url\">\n          <mat-icon>language</mat-icon>\n          {{company.websiteDisplay}}\n        </div>\n      </a>\n      <a href=\"https://www.instagram.com/{{company.instagram}}\" target=\"_blank\">\n        <div *ngIf=\"company.instagram\" class=\"instagram\">\n          <i class=\"fa fa-instagram\" style=\"font-size:24px\"></i>\n          {{company.instagram}}\n        </div>\n      </a>\n      <p [innerHTML]=\"company.about\">\n      </p>\n    </div>\n  </ng-container>\n\n  <company-not-found *ngIf=\"!company && companyParam\"\n    [companyName]=\"companyParam\">\n  </company-not-found>\n</div>"
+module.exports = "<div class=\"page-container\">\n  <ng-container *ngIf=\"company\">\n    <div class=\"image-container\">\n      <img\n        [src]=\"company.img || 'https://i.pinimg.com/originals/82/1a/a8/821aa80c546ac7d554e4ac0de0e95cb8.jpg'\">\n    </div>\n    <div class='image-overlay-container'>\n      <h1>{{company.name}}</h1>\n      <mat-chip-list class=\"chip-list\">\n        <mat-chip *ngFor=\"let tag of company.tags\" color=\"primary\" selected\n          (click)=\"hashtagClicked(tag)\" class=\"chip\">{{tag.name}}\n        </mat-chip>\n      </mat-chip-list>\n    </div>\n    <div class=\"profile-info\">\n      <a *ngIf=\"company.websiteUrl && company.websiteDisplay\"\n        [href]=\"company.websiteUrl\" target=\"_blank\">\n        <div class=\"website-url\">\n          <mat-icon>language</mat-icon>\n          {{company.websiteDisplay}}\n        </div>\n      </a>\n      <a href=\"https://www.instagram.com/{{company.instagram}}\" target=\"_blank\">\n        <div *ngIf=\"company.instagram\" class=\"instagram\">\n          <i class=\"fa fa-instagram\" style=\"font-size:24px\"></i>\n          {{company.instagram}}\n        </div>\n      </a>\n      <p [innerHTML]=\"company.about || ''\">\n      </p>\n    </div>\n  </ng-container>\n\n  <company-not-found *ngIf=\"!company && companyParam\"\n    [companyName]=\"companyParam\">\n  </company-not-found>\n</div>"
 
 /***/ }),
 
@@ -1059,7 +1059,7 @@ var SearchComponent = /** @class */ (function () {
         this.companyNameSearchResult = [];
         this.aboutSearchResult = [];
         this.suggestionResult = [];
-        this.showBackButton = true;
+        this.showBackButton = false;
         this.requiredScrollPos = 50;
     }
     SearchComponent.prototype.ngOnInit = function () {
@@ -1277,6 +1277,11 @@ var SearchComponent = /** @class */ (function () {
     };
     SearchComponent.prototype.maybeShowBackButton = function () {
         var _this = this;
+        if (this.router.url != '/' && !this.router.url.startsWith('/?')) {
+            console.log(this.router.url);
+            this.showBackButton = true;
+            this.isHomePage = false;
+        }
         this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["filter"])(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"]; })).subscribe(function (event) {
             if (event.url == '/' || event.url.startsWith('/?')) {
                 _this.showBackButton = false;
@@ -1404,7 +1409,7 @@ var CompaniesService = /** @class */ (function () {
             {
                 img: '/assets/imgs/tapi-tapi-profile.jpeg',
                 name: 'Tapi Tapi',
-                about: 'TODO TODO TODO TODO TODO',
+                about: 'Tapi Tapi is an educational initiative that is focused on sharing food and food culture from the African continent, with other Africans and our visitors alike. You can enjoy the familiar flavours of home and try new ones from friends and cultures unknown. We are open for business at the shop at 76 Lower Main Road, Observatory <a target="_blank" href="https://www.tapitapi.co.za/operatinghours">(operating hours)</a> Check out our online <a target="_blank" href="https://www.tapitapi.co.za/shop">store</a> for deliveries and other Tapi Tapi products beyond ice cream.',
                 tags: [{ name: 'Black owned' }, { name: 'Cape Town' }],
                 websiteDisplay: 'tapitapi.co.za',
                 websiteUrl: 'https://www.tapitapi.co.za',
@@ -1466,7 +1471,7 @@ var CompaniesService = /** @class */ (function () {
         get: function () {
             var _this = this;
             if (location.hostname.includes('localhost') || location.hostname.includes('127.0.0.1')) {
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this._companies_old);
+                // return of(this._companies_old);
             }
             if (this._companies.length) {
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this._companies);
@@ -1610,7 +1615,7 @@ var SpreadSheetService = /** @class */ (function () {
             if (rowData && rowData.length > 0) {
                 var _loop_1 = function (entry) {
                     if (rowData[entry].values[0].formattedValue == 'FALSE') {
-                        // continue;
+                        return "continue";
                     }
                     if (rowData[entry].values[0].formattedValue == 'END') {
                         return "break";
