@@ -1,4 +1,5 @@
-<div class="tag-side-bar" [class.open]="sideBarExpanded">
+<div *ngIf="tags.length > 0" class="tag-side-bar"
+  [class.open]="sideBarExpanded">
   <mat-chip-list>
     <mat-chip *ngFor="let tag of tags" color="primary"
       (click)="onTagclick(tag)">
