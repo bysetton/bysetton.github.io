@@ -281,7 +281,7 @@ export class SearchComponent implements OnInit {
 
   private maybeShowBackButton(): void {
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe((event: any) => {
-      if (event.url == '/') {
+      if (event.url == '/' || event.url.startsWith('/?')) {
         this.showBackButton = false;
         this.isHomePage = true;
         return;
