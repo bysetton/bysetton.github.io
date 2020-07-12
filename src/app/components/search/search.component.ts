@@ -282,7 +282,6 @@ export class SearchComponent implements OnInit {
   private maybeShowBackButton(): void {
 
     if (this.router.url != '/' && !this.router.url.startsWith('/?')) {
-      console.log(this.router.url);
       this.showBackButton = true;
       this.isHomePage = false;
     }
