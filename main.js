@@ -1621,7 +1621,7 @@ var SpreadSheetService = /** @class */ (function () {
                     }
                     var row = rowData[entry].values;
                     var tags = [];
-                    if (row[6]) {
+                    if (row[6].formattedValue) {
                         row[6].formattedValue.split(',').forEach(function (tag) {
                             tags.push({ name: tag });
                         });
