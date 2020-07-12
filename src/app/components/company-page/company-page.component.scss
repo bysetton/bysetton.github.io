@@ -5,6 +5,7 @@ $mobile-break-point: 600px;
 
 .page-container {
   height: 100%;
+  background-color: white;
 }
 
 p {
@@ -31,6 +32,9 @@ h1 {
   @media only screen and (max-width: $mobile-break-point) {
     font-size: 30px;
     padding: 15px;
+  }
+  @media only screen and (max-width: 900px) {
+    font-size: 30px;
   }
 }
 
@@ -102,7 +106,6 @@ a {
 }
 
 .image-container {
-  margin-top: -100px;
   position: relative;
   height: $image-height;
   display: flex;
@@ -142,7 +145,6 @@ a {
 }
 
 .profile-info {
-  background-color: red;
   padding: 20px;
   align-items: center;
   font-size: 20px;
