@@ -28,7 +28,7 @@ export class SpreadSheetService {
             }
             const row = rowData[entry].values;
             const tags = [] as Tag[];
-            if (row[6]) {
+            if (row[6].formattedValue) {
               row[6].formattedValue.split(',').forEach((tag) => {
                 tags.push({ name: tag });
               });
