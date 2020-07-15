@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
 }
 
 .background-curtain {
@@ -28,15 +29,17 @@
 }
 
 .background-image {
+  z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 
 .background-image img {
-  z-index: -1;
-  position: fixed;
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
