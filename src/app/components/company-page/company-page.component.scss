@@ -13,6 +13,9 @@ $secondary-color: #1b1b1b;
 p {
   margin: 20px 50px;
   text-align: center;
+  @media only screen and (max-width: $mobile-break-point) {
+    margin: 20px;
+  }
 }
 
 mat-card {
