@@ -87,3 +87,16 @@ mat-chip-list {
     cursor: pointer !important;
   }
 }
+
+a {
+  text-decoration: none;
+  color: #424242;
+}
+
+a:hover {
+  color: $secondary-color;
+}
+
+p {
+  color: $secondary-color;
+}

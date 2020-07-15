@@ -1,6 +1,6 @@
 $mobile-break-point: 600px;
 $primary-color: white;
-$secondary-color: black;
+$secondary-color: #1b1b1b;
 
 * {
   margin: 0;
@@ -23,7 +23,7 @@ $secondary-color: black;
 
   .search {
     position: absolute;
-    margin: 5px 5px 0;
+    margin: 6px 6px 0;
     top: 0;
     right: 0;
     bottom: 0;
@@ -53,7 +53,7 @@ $secondary-color: black;
       left: 12px;
       width: 12px;
       height: 2px;
-      background: white;
+      background: $primary-color;
       transform: rotate(45deg);
       transition: all 0.5s;
     }
@@ -69,28 +69,27 @@ $secondary-color: black;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 2px solid $primary-color;
       transition: all 0.5s;
     }
   }
 
   input {
     position: absolute;
-    // margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     width: 50px;
     height: 50px;
+    padding: 0 0 0 60px;
     outline: none;
     border-style: solid;
     border-width: 2px;
-    border-color: $secondary-color;
     border-radius: 30px;
-    background: $primary-color;
-    color: $secondary-color;
-    padding: 0 0 0 60px;
+    border-color: $primary-color;
+    background: $secondary-color;
+    color: $primary-color;
     transition: all 1s;
     opacity: 0;
     z-index: 5;
@@ -108,7 +107,7 @@ $secondary-color: black;
 
     &:focus ~ .search {
       right: -240px;
-      background: #151515;
+      background: $secondary-color;
       z-index: 6;
 
       &::before {
@@ -123,14 +122,14 @@ $secondary-color: black;
         width: 25px;
         height: 2px;
         border: none;
-        background: white;
+        background: $primary-color;
         border-radius: 0;
         transform: rotate(-45deg);
       }
     }
 
     &::placeholder {
-      color: white;
+      color: $primary-color;
       opacity: 0.5;
       font-weight: bolder;
     }

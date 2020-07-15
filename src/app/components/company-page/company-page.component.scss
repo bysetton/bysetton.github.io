@@ -11,7 +11,7 @@ $secondary-color: #1b1b1b;
 }
 
 p {
-  margin-top: 20px;
+  margin: 20px 50px;
   text-align: center;
 }
 
@@ -86,26 +86,6 @@ mat-icon {
   -moz-transition: color 0.3s ease-out;
   -o-transition: color 0.3s ease-out;
   transition: color 0.3s ease-out;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-  -webkit-transition: color 0.3s ease-out;
-  -moz-transition: color 0.3s ease-out;
-  -o-transition: color 0.3s ease-out;
-  transition: color 0.3s ease-out;
-}
-
-.instagram a:hover,
-.instagram:hover,
-.website-url a:hover,
-.website-url:hover {
-  color: red;
-  -webkit-transition: color 0.3s ease-in;
-  -moz-transition: color 0.3s ease-in;
-  -o-transition: color 0.3s ease-in;
-  transition: color 0.3s ease-in;
 }
 
 .image-container {
