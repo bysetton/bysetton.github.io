@@ -1,4 +1,6 @@
 $mobile-break-point: 600px;
+$primary-color: white;
+$secondary-color: black;
 
 * {
   margin: 0;
@@ -28,9 +30,9 @@ $mobile-break-point: 600px;
     left: 0;
     width: 40px;
     height: 40px;
-    background: crimson;
+    background: $secondary-color;
     border-radius: 50%;
-    border-color: black;
+    border-color: $primary-color;
     border-width: 2px;
     border-style: solid;
     transition: all 1s;
@@ -84,11 +86,10 @@ $mobile-break-point: 600px;
     outline: none;
     border-style: solid;
     border-width: 2px;
-    border-color: black;
+    border-color: $secondary-color;
     border-radius: 30px;
-    background: crimson;
-    color: white;
-    text-shadow: 0 0 10px crimson;
+    background: $primary-color;
+    color: $secondary-color;
     padding: 0 0 0 60px;
     transition: all 1s;
     opacity: 0;

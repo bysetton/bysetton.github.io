@@ -2,6 +2,8 @@ $background-color: rgba(234, 234, 234, 0.9);
 $image-height: 350px;
 $overlay-margin: 20px;
 $mobile-break-point: 600px;
+$primary-color: white;
+$secondary-color: #1b1b1b;
 
 .page-container {
   height: 100%;
@@ -9,7 +11,7 @@ $mobile-break-point: 600px;
 }
 
 p {
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -20,7 +22,8 @@ mat-card {
 }
 
 h1 {
-  background-color: $background-color;
+  color: $primary-color;
+  background-color: $secondary-color;
   text-align: center;
   font-size: 50px;
   border-radius: 60px;
@@ -67,7 +70,7 @@ mat-icon {
 
 .chip-list {
   mat-chip {
-    background-color: $background-color !important;
+    background-color: $secondary-color !important;
   }
 }
 

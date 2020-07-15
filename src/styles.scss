@@ -34,6 +34,8 @@ $findSA-theme: mat-light-theme($findSA-primary, $findSA-accent, $findSA-warn); /
 /* You can add global styles to this file, and also import other style files */
 $custom-typography: mat-typography-config($font-family: 'BonvenoCF,helvetica neue,Arial,sans-serif');
 @include mat-core($custom-typography);
+$primary-color: white;
+$secondary-color: #1b1b1b;
 
 html {
   overflow-y: scroll;
@@ -73,14 +75,13 @@ mat-card {
 }
 
 mat-chip {
-  color: black !important;
   background-color: transparent !important;
 }
 
 mat-chip-list {
   mat-chip {
     font-weight: 800!important;
-    border-color: black;
+    border-color: $secondary-color;
     border-width: 2px !important;
     border: solid;
     cursor: pointer !important;

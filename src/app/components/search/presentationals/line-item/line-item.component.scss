@@ -27,7 +27,7 @@ mat-card {
   display: flex;
   flex-direction: row;
   padding: 20px !important;
-  margin: 20px;
+  margin: 50px 20px;
   cursor: pointer;
   @media only screen and (max-width: $mobile-break-point) {
     padding: 0 0 10px !important;

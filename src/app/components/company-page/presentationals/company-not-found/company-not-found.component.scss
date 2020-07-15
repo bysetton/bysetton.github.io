@@ -1,11 +1,14 @@
+$primary-color: white;
+$secondary-color: #1b1b1b;
+
 mat-icon {
   width: 90px;
   height: 90px;
   font-size: 90px;
   border-radius: 50%;
   padding: 10px;
-  color: red;
-  background-color: white;
+  color: $primary-color;
+  background-color: $secondary-color;
   -moz-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
   -webkit-transition: all 1s ease-out;
@@ -14,8 +17,8 @@ mat-icon {
 }
 
 mat-icon:hover {
-  color: white;
-  background-color: red;
+  color: $secondary-color;
+  background-color: $primary-color;
   -moz-transition: all 0.5s ease-in;
   -o-transition: all 0.5s ease-in;
   -webkit-transition: all 0.5s ease-in;

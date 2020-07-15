@@ -1,4 +1,6 @@
 $mobile-break-point: 600px;
+$primary-color: white;
+$secondary-color: #1b1b1b;
 
 :host {
   z-index: 3;
@@ -12,6 +14,10 @@ $mobile-break-point: 600px;
 }
 
 button {
+  color: $primary-color;
+  border-color: $primary-color;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 20px;
   padding: 2px 17px 2px 14px;
   @media only screen and (max-width: $mobile-break-point) {
@@ -19,15 +25,15 @@ button {
     min-width: unset;
 
     mat-icon {
-      color: white;
+      color: $primary-color;
       line-height: 36px;
       height: 36px;
       width: 36px;
       border-radius: 50%;
-      border-color: black;
+      border-color: $primary-color;
       border-width: 2px;
       border-style: solid;
-      background-color: red;
+      background-color: $secondary-color;
     }
 
     .back-text {

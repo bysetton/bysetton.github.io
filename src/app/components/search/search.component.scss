@@ -1,5 +1,8 @@
 $search-padding-normal: 10px 50px 0;
 $search-padding-reduced: 0 50px 0;
+$primary-color: white;
+$secondary-color: #1b1b1b;
+$secondary-color-fade: rgba(27, 27, 27, 0.5);
 
 mobile-tags {
   position: fixed;
@@ -30,11 +33,20 @@ mobile-search {
 }
 
 :host ::ng-deep {
+  input {
+    caret-color: white !important;
+  }
+
+  .mat-form-field-label {
+    color: white !important;
+  }
+
   .mat-form-field-label-wrapper {
     top: -1em;
   }
 
   .mat-form-field-infix {
+    color: white;
     margin-left: 15px;
     padding-top: 10px;
   }
@@ -44,6 +56,8 @@ mobile-search {
   }
 
   .mat-form-field-outline {
+    color: white !important;
+
     .mat-form-field-outline-end {
       border-radius: 0 40px 40px 0;
     }
@@ -99,7 +113,7 @@ mobile-search {
 }
 
 .stick-menu {
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: $secondary-color-fade;
   padding: $search-padding-reduced;
   @media only screen and (max-width: 600px) {
     padding: 0;
@@ -107,7 +121,7 @@ mobile-search {
 }
 
 .unstick-menu {
-  background-color: red;
+  background-color: $secondary-color;
   padding: $search-padding-normal;
   @media only screen and (max-width: 600px) {
     padding: 0;
@@ -127,17 +141,15 @@ mat-label {
 
 mat-chip-list {
   mat-chip {
+    color: $primary-color !important;
+    background-color: transparent !important;
+    border-width: 1px !important;
     margin-top: -7px;
   }
 
   ::ng-deep .mat-chip-list-wrapper {
     height: 40px;
   }
-}
-
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary:hover {
-  background-color: grey;
-  color: black;
 }
 
 .no-result-text {
