@@ -58,3 +58,9 @@ button {
     margin: 60px 0 0 5px;
   }
 }
+
+.hideDesktopBack {
+  @media only screen and (min-width: $mobile-break-point) {
+    display: none;
+  }
+}

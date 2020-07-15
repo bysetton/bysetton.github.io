@@ -1,4 +1,5 @@
-<div class="button-container" [class.mobileBackFinalPosition]="show">
+<div class="button-container" [class.mobileBackFinalPosition]="show"
+  [class.hideDesktopBack]="!show">
   <button mat-button (click)="clicked.emit()">
     <mat-icon>arrow_back</mat-icon>
     <span class="back-text">
