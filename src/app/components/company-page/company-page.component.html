@@ -23,7 +23,7 @@
       <a href="https://www.instagram.com/{{company.instagram}}" target="_blank">
         <div *ngIf="company.instagram" class="instagram">
           <i class="fa fa-instagram" style="font-size:24px"></i>
-          {{company.instagram}}
+          {{company.instagram}} - follow
         </div>
       </a>
       <p [innerHTML]="company.about || ''">
