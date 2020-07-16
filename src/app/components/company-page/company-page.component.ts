@@ -15,9 +15,9 @@ export class CompanyPageComponent implements OnInit {
 
   company: Company;
   showSearch: boolean;
+  companyParam: string;
 
   private companies: Company[];
-  private companyParam: string;
 
   constructor(
     private route: ActivatedRoute,
